@@ -1,0 +1,141 @@
+{% extends  'default/backend/layout/12.html.twig' %}
+
+{% block body %}
+    {% if form_model is defined and form_model %}
+        <div class="content-block">
+            {{ form_start(form_model, {'attr': {'class': 'model-form'}}) }}
+            <div class="form-group mt-3" id="field-championship">
+                {{ form_label(form_model.championship) }}
+                {{ form_widget(form_model.championship) }}
+                <div class="invalid-feedback">
+                    {{ form_errors(form_model.championship) }}
+                </div>
+            </div>
+            {% if form_model.home is defined %}
+                <div class="form-group" id="field-season">
+                    {{ form_label(form_model.season) }}
+                    {{ form_widget(form_model.season) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form_model.season) }}
+                    </div>
+                </div>
+                {% if form_model.stage is defined %}
+                    <div class="form-group" id="field-stage">
+                        {{ form_label(form_model.stage) }}
+                        {{ form_widget(form_model.stage) }}
+                        <div class="invalid-feedback">
+                            {{ form_errors(form_model.stage) }}
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6">
+                        <div class="form-group" id="field-home">
+                            {{ form_label(form_model.home) }}
+                            {{ form_widget(form_model.home) }}
+                            <div class="invalid-feedback">
+                                {{ form_errors(form_model.home) }}
+                            </div>
+                        </div>
+                        {% if form_model.result is defined %}
+                            <div class="form-group" id="field-home-goal">
+                                {{ form_label(form_model.result.homeGoal) }}
+                                {{ form_widget(form_model.result.homeGoal) }}
+                                <div class="invalid-feedback">
+                                    {{ form_errors(form_model.result.homeGoal) }}
+                                </div>
+                            </div>
+                            <div class="form-group" id="field-home-yellow-card">
+                                {{ form_label(form_model.result.homeYellowCard) }}
+                                {{ form_widget(form_model.result.homeYellowCard) }}
+                                <div class="invalid-feedback">
+                                    {{ form_errors(form_model.result.homeYellowCard) }}
+                                </div>
+                            </div>
+                            <div class="form-group" id="field-home-red-card">
+                                {{ form_label(form_model.result.homeRedCard) }}
+                                {{ form_widget(form_model.result.homeRedCard) }}
+                                <div class="invalid-feedback">
+                                    {{ form_errors(form_model.result.homeRedCard) }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-6 col-sm-6">
+                        <div class="form-group" id="field-visitor">
+                            {{ form_label(form_model.visitor) }}
+                            {{ form_widget(form_model.visitor) }}
+                            <div class="invalid-feedback">
+                                {{ form_errors(form_model.visitor) }}
+                            </div>
+                        </div>
+                        {% if form_model.result is defined %}
+                            <div class="form-group" id="field-visitor-goal">
+                                {{ form_label(form_model.result.visitorGoal) }}
+                                {{ form_widget(form_model.result.visitorGoal) }}
+                                <div class="invalid-feedback">
+                                    {{ form_errors(form_model.result.visitorGoal) }}
+                                </div>
+                            </div>
+                            <div class="form-group" id="field-visitor-yellow-card">
+                                {{ form_label(form_model.result.visitorYellowCard) }}
+                                {{ form_widget(form_model.result.visitorYellowCard) }}
+                                <div class="invalid-feedback">
+                                    {{ form_errors(form_model.result.visitorYellowCard) }}
+                                </div>
+                            </div>
+                            <div class="form-group" id="field-visitor-red-card">
+                                {{ form_label(form_model.result.visitorRedCard) }}
+                                {{ form_widget(form_model.result.visitorRedCard) }}
+                                <div class="invalid-feedback">
+                                    {{ form_errors(form_model.result.visitorRedCard) }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group" id="field-description">
+                    {{ form_label(form_model.description) }}
+                    {{ form_widget(form_model.description) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form_model.description) }}
+                    </div>
+                </div>
+                <div class="form-group" id="field-place">
+                    {{ form_label(form_model.place) }}
+                    {{ form_widget(form_model.place) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form_model.place) }}
+                    </div>
+                </div>
+                <div class="form-group" id="field-scheduledAt">
+                    {{ form_label(form_model.scheduledAt) }}
+                    <div>
+                    {{ form_widget(form_model.scheduledAt) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form_model.scheduledAt) }}
+                    </div>
+                    </div>
+                </div>
+
+
+
+
+                {% if form_model.save is defined or form_model.saveAndAdd is defined %}
+                    <div class="form-group text-right">
+                        {% if form_model.save is defined %}
+                            {{ form_widget(form_model.save) }}
+                        {% endif %}
+                        {% if form_model.saveAndAdd is defined %}
+                            {{ form_widget(form_model.saveAndAdd) }}
+                        {% endif %}
+                        {% if cancel_url is defined and cancel_url %}
+                            <a class="btn btn-md btn-gray" href="{{ cancel_url }}">{{ 'button.cancel'|trans }}</a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endif %}
+            {{ form_end(form_model) }}
+        </div>
+    {% endif %}
+{% endblock %}

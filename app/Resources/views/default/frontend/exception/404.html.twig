@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>{% block title %}{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="{{ asset('bundles/app/font/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/app/default/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/app/default/css/mdb.min.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/app/default/css/style.css') }}" type="text/css" rel="stylesheet" />
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+
+
+<main>
+    {% block body %}
+        Pafe nod fksoso
+    {% endblock %}
+</main>
+
+<footer class="page-footer center-on-small-only">
+</footer>
+
+</body>
+</html>

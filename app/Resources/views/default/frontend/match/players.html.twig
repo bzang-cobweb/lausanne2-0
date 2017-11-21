@@ -1,0 +1,19 @@
+{% if matchPlayers is defined and matchPlayers|length > 0 and championship and season   %}
+    {% for matchPlayer in matchPlayers %}
+        <a href="{{ path('player_route',
+        {
+            'championship': championship.id,
+            'season': season,
+            'id': matchPlayer.player.id
+        })
+        }}" class="team-scorer classic d-block">
+            <span class="uc-words"> {{  matchPlayer.player }}</span>
+            {% if matchPlayer.yellowCard > 0 %}
+                <span class="yellow-card"></span>
+            {% endif %}
+            {% if matchPlayer.redCard > 0 %}
+                <span class="red-card"></span>
+            {% endif %}
+        </a>
+    {% endfor %}
+{% endif %}

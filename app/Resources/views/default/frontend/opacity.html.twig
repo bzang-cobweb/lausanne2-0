@@ -1,0 +1,11 @@
+{% if title is defined %}
+    <section id="opacity-block">
+        <div class="title uc-words">{{ title|capitalize }}</div>
+        {% if teaser is defined and teaser %}
+            <div class="teaser">{{ teaser|capitalize }}</div>
+        {% endif %}
+        {% if content is defined and content %}
+            <div class="content none-480">{{ content|nl2br }}</div>
+        {% endif %}
+    </section>
+{% endif %}

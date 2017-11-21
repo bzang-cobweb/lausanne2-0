@@ -1,0 +1,22 @@
+{% if matchPlayers is defined and matchPlayers|length > 0 and championship and season %}
+    {% for matchPlayer in matchPlayers %}
+        {% if matchPlayer.goal > 0 or matchPlayer.autoGoal > 0 %}
+            <a href="{{ path('player_route',
+            {
+                'championship': championship.id,
+                'season': season,
+                'id': matchPlayer.player.id
+            })
+            }}" class="team-scorer classic">
+                <span class="uc-words">{{  matchPlayer.player }}</span>
+                {% if matchPlayer.goal > 0 %}
+                    ({{  matchPlayer.goal }})
+                {% endif %}
+                {% if matchPlayer.autoGoal > 0 %}
+                    ({{  matchPlayer.autoGoal }} csc)
+                {% endif %}
+            </a>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+

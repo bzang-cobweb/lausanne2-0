@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('bundles/app/font/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/app/' ~ theme ~ '/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/app/' ~ theme ~ '/css/mdb.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/app/' ~ theme ~ '/js/datepicker/build/jquery.datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/app/' ~ theme ~ '/css/admin.css') }}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <header>
+            {{ include(template_dir ~ 'header.html.twig')}}
+        </header>
+
+        <main>
+            <div class="main-view">
+                <aside id="sidebar">
+                    {{ include(template_dir ~ 'main_menu.html.twig')}}
+                </aside>
+                <div class="main-content">
+                    <div class="container-wrap">
+                        {{ include(template_dir ~ 'flash.html.twig')}}
+
+                        {{ include(template_dir ~ 'title.html.twig')}}
+
+                        {% block body %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        {% block javascripts %}
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/jquery-3.2.1.min.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/popper.min.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/mdb.min.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/admin.validate.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/datatable.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/select.multiple.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/html.replace.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/json.delete.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/html.loader.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/datepicker/build/jquery.datetimepicker.full.min.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/admin.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

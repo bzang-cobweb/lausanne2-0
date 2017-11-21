@@ -1,0 +1,32 @@
+{% if players is defined and players|length > 0 and championship is defined and season is defined %}
+    <div class="players mt-15">
+        {% for player in players %}
+            <div class="float-left mt-1 width-100">
+                <div class="float-left">
+                    <a href="{{ path('player_route',
+                    {
+                        'championship': championship.id,
+                        'season': season,
+                        'id': player.id
+                    })
+                    }}" class="classic uc-words">
+                        {{ player }}
+                    </a>
+                </div>
+                {% if player.trigram %}
+                    <div class="float-right font-bold">
+                        <a href="{{ path('player_route',
+                        {
+                            'championship': championship.id,
+                            'season': season,
+                            'id': player.id
+                        })
+                        }}" class="classic uc-words">
+                            {{ player.trigram }}
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

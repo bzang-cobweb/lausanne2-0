@@ -1,0 +1,27 @@
+{% if player is defined and player %}
+    <div>
+        <h3><a href="{{ path('admin_add_edit_player_route', {id: player.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></h3>
+        <hr>
+        <div class="row">
+            <div class="col-4 text-right"><label>{{ 'player.first_name'|trans }}</label></div>
+            <div class="">{{ player.firstname }}</div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-right"><label>{{ 'player.last_name'|trans }}</label></div>
+            <div class="">{{ player.lastname }}</div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-right"><label>{{ 'player.alias'|trans }}</label></div>
+            <div class="">{{ player.trigram }}</div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-right"><label>{{ 'label.since'|trans }}</label></div>
+            <div class="">{{ player.createdAt|date('d.m.Y') }}</div>
+        </div>
+        {% if player.description is defined and player.description %}
+            <div class="row">
+                <div class="col-12">{{ player.description|nl2br }}</div>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

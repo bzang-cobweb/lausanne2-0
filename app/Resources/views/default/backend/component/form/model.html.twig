@@ -1,0 +1,38 @@
+{% if form_model is defined and form_model %}
+    {{ form_start(form_model, {'attr': {'class': 'model-form'}}) }}
+        {% if form_title is defined %}
+            <h3>{{ form_title }}</h3>
+        {% endif %}
+        {% if form_messages is defined and form_messages|length > 0 %}
+            <ul>
+                {% for message in  form_messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% for field in form_model.children|keys %}
+            {% if field != '_token' and field != 'save' and field != 'saveAndAdd' %}
+                <div class="form-group" id="field-{{ field }}">
+                    {{ form_label(attribute(form_model.children, field)) }}
+                    {{ form_widget(attribute(form_model.children, field)) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(attribute(form_model.children, field)) }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% if form_model.save is defined or form_model.saveAndAdd is defined %}
+            <div class="form-group text-right">
+                {% if form_model.save is defined %}
+                    {{ form_widget(form_model.save) }}
+                {% endif %}
+                {% if form_model.saveAndAdd is defined %}
+                    {{ form_widget(form_model.saveAndAdd) }}
+                {% endif %}
+                {% if cancel_url is defined and cancel_url %}
+                    <a class="btn btn-md btn-gray" href="{{ cancel_url }}">{{ 'button.cancel'|trans }}</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    {{ form_end(form_model) }}
+{% endif %}

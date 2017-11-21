@@ -1,0 +1,9 @@
+{% extends  'default/backend/layout/12.html.twig' %}
+
+{% block body %}
+    {% if form_picture is defined %}
+        <div class="content-block">
+            {{ include(template_dir ~ 'component/form/picture.html.twig') }}
+        </div>
+    {% endif %}
+{% endblock %}

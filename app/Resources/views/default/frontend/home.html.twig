@@ -1,0 +1,78 @@
+{% extends  'default/frontend/layout/12.html.twig' %}
+
+{% block menu %}
+    <section id="submenu">
+        <ul class="nav nav-pills nav-justified" id="navTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="content-left-tab" data-toggle="pill" href="#content-left" role="tab" aria-controls="content-left" aria-selected="true">
+                    {{ 'label.results'|trans }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" id="content-middle-tab" data-toggle="pill" href="#content-middle" role="tab" aria-controls="content-middle" aria-selected="false">
+                    {{ 'label.news'|trans }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="content-right-tab" data-toggle="pill" href="#content-right" role="tab" aria-controls="content-right" aria-selected="false">
+                    {{ 'label.standings'|trans }}
+                </a>
+            </li>
+        </ul>
+    </section>
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div id="content">
+                    <div id="content-left" class="hide-width">
+                        {% if championships is defined and championships|length > 0 %}
+                            <div class="headline">{{ 'label.results'|trans }}</div>
+                                {% for championship in championships %}
+                                    {% if championship.matches|length > 0 %}
+                                        <div class="latest">
+                                        {% include(template_dir ~ 'championship/latest_result.html.twig') with {
+                                            championship: championship,
+                                            season: season,
+                                            template_dir: template_dir
+                                        } only %}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div id="content-middle" class="active">
+                        <div class="headline">{{ 'label.news'|trans }}</div>
+                        <div id="news-block">
+                            <button data-url="{{ path('news_route') }}" class="html-replace loader" id="news-loader"></button>
+                        </div>
+                    </div>
+
+                    <div id="content-right" class="hide-width">
+                        <div id="standings-block">
+                            {% if championships is defined and championships|length > 0
+                                and standings is defined and standings|length > 0%}
+                                <div class="headline">{{ 'label.standings'|trans }}</div>
+                                {% for championship in championships %}
+                                    {% if standings[championship.id] is defined %}
+                                        <div class="latest standing">
+                                            {% include(template_dir ~ 'championship/latest_standing.html.twig') with {
+                                                championship: championship,
+                                                season: season,
+                                                standing: standings[championship.id],
+                                                template_dir: template_dir
+                                            } only %}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

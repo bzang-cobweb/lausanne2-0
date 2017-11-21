@@ -1,0 +1,104 @@
+{% extends  'default/frontend/layout/12.html.twig' %}
+
+{% block menu %}
+    {{ include(template_dir ~ 'menu.html.twig')}}
+{% endblock %}
+
+{% block image %}
+    {% include(template_dir ~ 'opacity.html.twig') with {
+        title: team.name,
+        teaser: team.createdAt|date('d.m.Y'),
+        content: team.description
+    } only %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div id="content">
+                    {% include(template_dir ~ 'team/headline.html.twig') with {
+                        championship: championship,
+                        championships: championships,
+                        team: team,
+                        season: season,
+                        template_dir: template_dir
+                    } only %}
+                    <div id="team-block" class="block">
+                        <div id="top-block">
+                            {% include(template_dir ~ 'team/seasons.html.twig') with {
+                                championship: championship,
+                                team: team,
+                                season: season,
+                                seasons: seasons
+                            } only %}
+                        </div>
+                        <div class="team">
+                            <ul class="nav nav-tabs" id="teamTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="team-results-tab" data-toggle="tab" href="#team-results" role="tab" aria-controls="team-results" aria-selected="true">
+                                        {{ 'label.results'|trans }}
+                                    </a>
+                                </li>
+                                {% if players is defined and players|length > 0 %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="team-players-tab" data-toggle="tab" href="#team-players" role="tab" aria-controls="team-players" aria-selected="false">
+                                            {{ 'label.players'|trans }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% if stats is defined and stats %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="team-stats-tab" data-toggle="tab" href="#team-stats" role="tab" aria-controls="team-stats" aria-selected="false">
+                                            {{ 'label.stats'|trans }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% if pictures is defined and pictures|length > 0 %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="team-gallery-tab" data-toggle="tab" href="#team-gallery" role="tab" aria-controls="team-gallery" aria-selected="false">
+                                            {{ 'label.gallery'|trans }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                            <div class="tab-content" id="teamTabContent">
+                                <div class="tab-pane fade show active" id="team-results" role="tabpanel" aria-labelledby="team-results-tab">
+                                    <div class="latest">
+                                        <button data-url="{{ path('match_route', {'championship': championship.id, 'season': season, 'team': team.id}) }}" class="html-replace loader" id="match-loader"></button>
+                                    </div>
+                                </div>
+                                {% if players is defined and players|length > 0 %}
+                                    <div class="tab-pane fade" id="team-players" role="tabpanel" aria-labelledby="team-players-tab">
+                                        {% include(template_dir ~ 'team/players.html.twig') with {
+                                            players: players,
+                                            championship: championship,
+                                            season: season
+                                        } only %}
+                                    </div>
+                                {% endif %}
+                                {% if stats is defined and stats %}
+                                    <div class="tab-pane fade" id="team-stats" role="tabpanel" aria-labelledby="team-stats-tab">
+                                        {% include(template_dir ~ 'team/stats.html.twig') with {
+                                            stats: stats,
+                                            cup: championship.cup
+                                        } only %}
+                                    </div>
+                                {% endif %}
+                                {% if pictures is defined and pictures|length > 0 %}
+                                    <div class="tab-pane fade" id="team-gallery" role="tabpanel" aria-labelledby="team-gallery-tab">
+                                        <div class="mt-15">
+                                            {% include(template_dir ~ 'image_gallery.html.twig') with {
+                                                pictures: team.pictures
+                                            } only %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

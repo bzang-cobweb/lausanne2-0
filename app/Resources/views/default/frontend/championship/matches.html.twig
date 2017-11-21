@@ -1,0 +1,40 @@
+{% extends  'default/frontend/layout/12.html.twig' %}
+
+{% block menu %}
+    {% include(template_dir ~ 'championship/menu.html.twig') with {
+        championship: championship,
+        season: season,
+        template_dir: template_dir,
+        'view': 'results'
+    } only %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div id="content">
+                    {% include(template_dir ~ 'championship/headline.html.twig') with {
+                        championship: championship,
+                        season: season,
+                        template_dir: template_dir,
+                        'view': 'results'
+                    } only %}
+                    <div id="match-block" class="block match-list">
+                        <div id="top-block">
+                            {% include(template_dir ~ 'championship/seasons.html.twig') with {
+                            championship: championship,
+                            season: season,
+                            seasons: seasons,
+                            'view': 'results'
+                            } only %}
+                        </div>
+                        <div class="latest">
+                            <button data-url="{{ path('match_route', {'championship': championship.id, 'season': season}) }}" class="html-replace loader" id="match-loader"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

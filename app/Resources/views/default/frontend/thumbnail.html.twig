@@ -1,0 +1,20 @@
+{% if pictures is defined and pictures|length > 1 and cover is defined and cover %}
+    <div class="thumbnail-gallery">
+        {% for picture in pictures %}
+            {% if picture.id != cover.id %}
+                <a class="thumb-{{ pictures|length }}" href="{{ asset(picture.pathname) | imagine_filter('original') }}"
+                   title="{{ picture.title }}" class="entry-link"
+                   data-facebook-text="{{ picture.title }}">
+                    <img alt="{{ picture.alt }}"
+                         src="{{ asset(picture.pathname) | imagine_filter('original') }}"
+                         title="{{ picture.title }}">
+                    {% if picture.title %}
+                        <span>{{ picture.title|capitalize }}</span>
+                    {% endif %}
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
+
+

@@ -1,0 +1,24 @@
+{% if news is defined and news.championship and season is defined and season %}
+    <div class="card-block{% if position is defined %} type-{{ position }}{% endif %}">
+        <div class="card card-outline-news">
+            {% if news.cover %}
+                <a href="{{ path('news_detail_route', {'id': news.id, 'championship': news.championship.id, 'season': season}) }}">
+                    <img class="card-img-top" alt="{{ news.cover.alt }}" title="{{ news.cover.title }}" src="{{ asset(news.cover.pathname) | imagine_filter('original') }}" />
+                </a>
+            {% endif %}
+            <div class="card-body">
+                <a href="{{ path('news_detail_route', {'id': news.id, 'championship': news.championship.id, 'season': season}) }}" class="card-title classic">
+                    {{ news.title|capitalize }}
+                </a>
+                <div class="card-author">
+                    {{ 'label.by'|trans }} {{ news.author }} -
+                    {% if news.updatedAt %}
+                        {{ news.updatedAt|date('d.m.Y H:i') }}
+                    {% else %}
+                        {{ news.createdAt|date('d.m.Y H:i') }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

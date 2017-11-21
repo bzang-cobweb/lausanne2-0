@@ -1,0 +1,8 @@
+{% if matches is defined and matches|length > 0 %}
+    {% for match in matches %}
+        {% include(template_dir ~ 'match/latest.html.twig') with {match: match} only %}
+    {% endfor %}
+    {% if match_next_page is defined %}
+        <button data-url="{{ match_next_page }}" class="html-replace loader" id="match-loader"></button>
+    {% endif %}
+{% endif %}

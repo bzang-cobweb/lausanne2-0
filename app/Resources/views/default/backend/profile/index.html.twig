@@ -1,0 +1,10 @@
+{% extends  'default/backend/layout/12.html.twig' %}
+
+{% block body %}
+    {% if admin is defined and admin %}
+        {% include(template_dir ~ 'profile/detail.html.twig') with {admin: admin} only %}
+        {% if form_password is defined and form_password %}
+            {% include(template_dir ~ 'profile/password.html.twig') with {template_dir: template_dir, form_password: form_password} only %}
+        {% endif %}
+    {% endif %}
+{% endblock %}

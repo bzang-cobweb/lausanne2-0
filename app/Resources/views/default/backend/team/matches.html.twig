@@ -1,0 +1,9 @@
+{% if id is defined and id > 0 %}
+    <div>
+        <div class="row">
+            <div id="team-matches" class="col-12 dataTable html-loader" data-url="{{ path('admin_match_route', {team: id}) }}">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+{% endif %}

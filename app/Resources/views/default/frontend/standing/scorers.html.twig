@@ -1,0 +1,30 @@
+{% if championship is defined and season is defined and scorers is defined and scorers|length > 0 %}
+    <table class="mt-15 sortable">
+        <thead class="bg-gray">
+            <tr>
+                <th class="stand-rank"></th>
+                <th class="stand-name">{{ 'label.players'|trans }}</th>
+                <th class="stand-normal sort desc">{{ 'label.goals'|trans }}</th>
+                <th class="stand-normal sort none-767">{{ 'label.ag'|trans }}</th>
+                <th class="stand-normal sort none-480"><span class="yellow-card"></span></th>
+                <th class="stand-normal sort none-480"><span class="red-card"></span></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i,player in scorers %}
+                <tr>
+                    <td class="stand-rank">{{ i + 1 }}</td>
+                    <td class="stand-name">
+                        <a href="{{ path('player_route', {'championship': championship.id, 'season': season, 'id': player.id}) }}" class="classic uc-words">
+                            {{ player.firstname }} {{ player.lastname }}
+                        </a>
+                    </td>
+                    <td class="stand-normal">{{ player.goal }}</td>
+                    <td class="stand-normal none-767">{{ player.auto_goal }}</td>
+                    <td class="stand-normal none-480">{{ player.yellow }}</td>
+                    <td class="stand-normal none-480">{{ player.red }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

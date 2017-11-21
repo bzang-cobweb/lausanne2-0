@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /bundles/
+Disallow: /app*
+Disallow: /config*
+Disallow: /uploads/

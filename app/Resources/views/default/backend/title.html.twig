@@ -1,0 +1,28 @@
+{% if page is defined %}
+    <h2>
+        {% if page == 'player' %}
+            <i class="fa fa fa-male fa-fw hidden-xs-down" aria-hidden="true"></i>{% if title is defined %}{{ title }}{% else %}{{ 'label.players'|trans }}{% endif %}
+        {% elseif page == 'team' %}
+            <i class="fa fa fa-group fa-fw hidden-xs-down" aria-hidden="true"></i>{% if title is defined %}{{ title }}{% else %}{{ 'label.teams'|trans }}{% endif %}
+        {% elseif page == 'championship' %}
+            <i class="fa fa fa-trophy fa-fw hidden-xs-down" aria-hidden="true"></i>{% if title is defined %}{{ title }}{% else %}{{ 'label.championships'|trans }}{% endif %}
+        {% elseif page == 'match' %}
+            <i class="fa fa-futbol-o fa-fw hidden-xs-down" aria-hidden="true"></i>{% if title is defined %}{{ title }}{% else %}{{ 'label.matches'|trans }}{% endif %}
+        {% elseif page == 'news' %}
+            <i class="fa fa-newspaper-o fa-fw hidden-xs-down" aria-hidden="true"></i>{% if title is defined %}{{ title }}{% else %}{{ 'label.news'|trans }}{% endif %}
+        {% elseif page == 'profile' %}
+            <i class="fa fa-cog fa-fw hidden-xs-down" aria-hidden="true"></i>{% if title is defined %}{{ title }}{% else %}{{ 'label.championships'|trans }}{% endif %}
+        {% elseif title is defined %}
+            {{ title }}
+        {% endif %}
+
+        {% if back_to_list is defined and back_to_list %}
+            <a class="float-right btn btn-md btn-default hidden-762-down" href="{{ back_to_list }}">{{ (page ~ '.list')|trans }}</a>
+        {% endif %}
+        {% if add_edit_url is defined and add_edit_url %}
+            <a class="float-right btn btn-md btn-default hidden-762-down" href="{{ add_edit_url }}">{{ 'button.edit'|trans }}</a>
+        {% elseif cancel_url is defined and cancel_url %}
+            <a class="float-right btn btn-md btn-default hidden-762-down" href="{{ cancel_url }}">{{ 'button.cancel'|trans }}</a>
+        {% endif %}
+    </h2>
+{% endif %}

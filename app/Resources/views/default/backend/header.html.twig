@@ -1,0 +1,35 @@
+<nav class="navbar navbar-green fixed-top navbar-inverse navbar-dark">
+    <div class="logo-burger">
+        <button id="navbar-button" class="navbar-toggler hidden-up p-0" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+            <div id="navbar-open">
+                <span class="navbar-toggler-icon"></span>
+            </div>
+        </button>
+        <a class="navbar-brand" href="{{ path('admin_home_route') }}">{{ 'label.logo'|trans }}</a>
+    </div>
+
+    {% if menu.sub is defined and menu.sub|length > 0 %}
+        <div class="navbar-right-content hidden-down p-20">
+            {% for group in menu.sub %}
+                {% if group|length > 0 %}
+                    <div class="dropdown">
+                        <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user mr-1"></i>{{ admin.email }}
+                        </a>
+                        <ul class="dropdown-menu">
+                        {% for item in group %}
+                            <li>
+                                <a class="" href="{% if item.route is defined and item.route != '' %}{{ path(item.route) }}{% else %}#{% endif %}">
+                                    {% if item.icon is defined and item.icon != '' %}<i class="fa fa-{{ item.icon }} mr-1" aria-hidden="true"></i>{% endif %}
+                                    {% if item.label is defined and item.label != '' %}{{ item.label|trans }}{% endif %}
+                                </a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+</nav>
+

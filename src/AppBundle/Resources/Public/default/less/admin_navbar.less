@@ -1,0 +1,74 @@
+@import "variables.less";
+
+header {
+  .navbar {
+    height: 60px;
+    border-radius: 0;
+    padding: 0 !important;
+
+    .logo-burger {
+      padding: 20px !important;
+      float: left;
+
+      .navbar-brand {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-right: 0;
+        margin-left: 0;
+        vertical-align: middle;
+        font-weight: 400;
+      }
+    }
+
+    .navbar-right-content{
+      .dropdown{
+        .dropdown-menu{
+          margin-top: 18px;
+          right: 0;
+          a{
+            display: block;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            &:hover{
+              color: #000!important;
+            }
+          }
+        }
+      }
+    }
+
+    &.navbar-green {
+      background-color: @green-color;
+    }
+
+    &.navbar-dark {
+
+      #navbarSupportedContent {
+        padding: 0 .75rem !important;
+        background-color: rgba(255, 255, 255, .1);
+      }
+
+      .navbar-nav {
+        .nav-item {
+          > .nav-link {
+            padding-left: 0px;
+            padding-right: 0px;
+          }
+          &.active {
+            > .nav-link {
+              background-color: inherit;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+footer{
+  &.page-footer{
+    background-color: @green-color;
+  }
+}
+
+

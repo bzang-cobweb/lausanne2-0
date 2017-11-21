@@ -1,0 +1,36 @@
+{% if championship is defined and teams is defined and teams|length > 0 %}
+    <table class="mt-15 sortable">
+        <thead class="bg-gray">
+            <tr>
+                <th class="stand-rank"></th>
+                <th class="stand-name">{{ 'label.teams'|trans }}</th>
+                <th class="stand-normal sort desc">{{ 'label.pts'|trans }}</th>
+                <th class="stand-normal sort none-767">{{ 'label.p'|trans }}</th>
+                <th class="stand-normal sort none-767">{{ 'label.w'|trans }}</th>
+                <th class="stand-normal sort none-767">{{ 'label.d'|trans }}</th>
+                <th class="stand-normal sort none-767">{{ 'label.l'|trans }}</th>
+                <th class="stand-normal sort none-992">{{ 'label.g'|trans }}</th>
+                <th class="stand-normal sort none-992">{{ 'label.ga'|trans }}</th>
+                <th class="stand-normal sort none-992">+/-</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i,team in teams %}
+                <tr>
+                    <td class="stand-rank">{{ i + 1 }}</td>
+                    <td class="stand-name">
+                        <a href="{{ path('team_route', {'championship': championship.id, 'season': season, 'id': team.id}) }}" class="classic">{{ team.name|capitalize }}</a>
+                    </td>
+                    <td class="stand-normal">{{ team.points }}</td>
+                    <td class="stand-normal none-767">{{ team.play }}</td>
+                    <td class="stand-normal none-767">{{ team.win }}</td>
+                    <td class="stand-normal none-767">{{ team.draw }}</td>
+                    <td class="stand-normal none-767">{{ team.lost }}</td>
+                    <td class="stand-normal none-992">{{ team.goals }}</td>
+                    <td class="stand-normal none-992">{{ team.c_goals }}</td>
+                    <td class="stand-normal none-992">{{ team.av_goals }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

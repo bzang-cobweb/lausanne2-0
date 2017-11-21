@@ -1,0 +1,13 @@
+{% if championships_highlight is defined and championships_highlight|length > 0 and current_season is defined and current_season %}
+    <section id="menu">
+        <ul class="menu">
+            {% for championship_highlight in championships_highlight %}
+                <li>
+                    <a class="" href="{{ path('championship_news_route', {'id': championship_highlight.id, 'season': current_season}) }}">
+                        {{ championship_highlight|capitalize }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endif %}

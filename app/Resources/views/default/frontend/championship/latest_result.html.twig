@@ -1,0 +1,15 @@
+{% if championship is defined and championship.matches|length > 0 %}
+    <div class="latest-headline">
+        <a class="classic" href="{{ path('championship_news_route', {'id': championship.id, 'season': season}) }}">{{ championship|capitalize }}</a>
+    </div>
+    {% for match in championship.matches %}
+        {% include(template_dir ~ 'match/latest.html.twig') with {match: match} only %}
+    {% endfor %}
+    {% if season is defined and season %}
+        <div class="latest-action">
+            <a class="classic" href="{{ path('championship_match_route', {'id': championship.id, 'season': season}) }}">
+                {{ 'label.results'|trans }}
+            </a>
+        </div>
+    {% endif %}
+{% endif %}

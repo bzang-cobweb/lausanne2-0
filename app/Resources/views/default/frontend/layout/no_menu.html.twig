@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('bundles/app/font/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/app/' ~ theme ~ '/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/app/' ~ theme ~ '/css/mdb.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/app/' ~ theme ~ '/css/style.css') }}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-green navbar-inverse navbar-dark">
+                <div class="ml-2">
+                    <a class="navbar-brand" href="{{ path('home_route') }}">{{ 'label.logo'|trans }}</a>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="container">
+                {% block body %}{% endblock %}
+            </div>
+        </main>
+
+        {% block javascripts %}
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/jquery-3.2.1.min.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/popper.min.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/mdb.min.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

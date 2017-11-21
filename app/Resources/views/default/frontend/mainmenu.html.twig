@@ -1,0 +1,31 @@
+{% if menu is defined and menu and page != 'security' %}
+    <ul class="nav navbar-nav mainmenu">
+        {% for entry in menu %}
+            <li {% if page == entry.page %}class="active"{% endif %}>
+                {% if entry.submenu is defined %}
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ entry.label }} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        {% for subentry in entry.submenu %}
+                            <li>
+                                {% if subentry.route is defined %}
+                                    <a href="{{ url(subentry.route) }}">{{ subentry.label }}</a>
+                                {% elseif subentry.href is defined %}
+                                    <a href="{{ subentry.href }}">{{ subentry.label }}</a>
+                                {% else %}
+                                    <a>{{ subentry.label }}</a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    {% if entry.route is defined %}
+                        <a href="{{ url(entry.route) }}">{{ entry.label }}</a>
+                    {% else %}
+                        <a>{{ entry.label }}</a>
+                    {% endif %}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+

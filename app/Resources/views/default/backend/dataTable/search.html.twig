@@ -1,0 +1,8 @@
+<div class="col-md-4">
+    <form class="form-inline float-md-right search-form dt-search" method="post">
+        <div class="input-group">
+            <input type="text" class="form-control" name="search" value="{% if words is defined %}{{ words }}{% endif %}" placeholder="{{ 'admin.label.search'|trans }}..." aria-label="{{ 'admin.label.search'|trans }}...">
+            <button class="btn btn-sm btn-gray" type="submit"><i class="fa fa-search"></i></button>
+        </div>
+    </form>
+</div>

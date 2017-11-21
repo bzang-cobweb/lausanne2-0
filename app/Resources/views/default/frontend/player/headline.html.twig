@@ -1,0 +1,18 @@
+{% if player is defined and player and championships is defined and championships|length > 0 and championship is defined and season is defined and season %}
+    <div class="headline">
+        <span class="head">{{ 'label.championships'|trans }}</span>
+        <div class="dropdown d-block">
+            <span class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ championship|capitalize }}
+            </span>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                {% for c in championships %}
+                    <a class="dropdown-item{% if c.id == championship.id %} active{% endif %}"
+                       href="{{ path('player_route', {'championship': c.id, 'season': season, 'id': player.id}) }}">
+                        {{ c|capitalize }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

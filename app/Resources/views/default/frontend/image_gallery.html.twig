@@ -1,0 +1,9 @@
+{% if pictures is defined and pictures|length > 0 %}
+    <div class="gallery d-flex flex-wrap">
+        {% for picture in pictures %}
+            <a href="{{ asset(picture.pathname) | imagine_filter('original') }}">
+                <img class="d-block" alt="{{ picture.alt }}" title="{{ picture.title }}" src="{{ asset(picture.pathname) | imagine_filter('thumbnail') }}" />
+            </a>
+        {% endfor %}
+    </div>
+{% endif %}

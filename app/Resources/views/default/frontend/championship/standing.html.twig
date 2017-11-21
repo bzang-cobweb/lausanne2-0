@@ -1,0 +1,80 @@
+{% extends  'default/frontend/layout/12.html.twig' %}
+
+{% block menu %}
+    {% include(template_dir ~ 'championship/menu.html.twig') with {
+        championship: championship,
+        season: season,
+        template_dir: template_dir,
+        'view': 'standings'
+    } only %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div id="content">
+                    {% include(template_dir ~ 'championship/headline.html.twig') with {
+                        championship: championship,
+                        season: season,
+                        template_dir: template_dir,
+                        'view': 'standings'
+                    } only %}
+                    <div id="match-block" class="block match-list">
+                        <div id="top-block">
+                            {% include(template_dir ~ 'championship/seasons.html.twig') with {
+                                championship: championship,
+                                season: season,
+                                seasons: seasons,
+                                'view': 'standings'
+                            } only %}
+                        </div>
+                        <div class="standing">
+                            {% if teams is defined and teams|length > 0 %}
+                                <ul class="nav nav-tabs" id="standingTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link{% if tab is not defined or tab == 0 %} active{% endif %}"
+                                           id="standing-teams-tab" data-toggle="tab" href="#standing-teams" role="tab"
+                                           aria-controls="standing-teams" aria-selected="{% if tab is not defined or tab == 0 %}true{% else %}false{% endif %}">
+                                            {{ 'label.teams'|trans }}
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link{% if tab is defined and tab == 1 %} active{% endif %}"
+                                           id="standing-scorers-tab" data-toggle="tab" href="#standing-scorers" role="tab"
+                                           aria-controls="standing-scorers" aria-selected="{% if tab is defined and tab == 1 %}true{% else %}false{% endif %}">
+                                            {{ 'label.scorers'|trans }}
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="standingTabContent">
+                                    <div class="tab-pane fade{% if tab is not defined or tab == 0 %} show active{% endif %}"
+                                         id="standing-teams" role="tabpanel" aria-labelledby="standing-teams-tab">
+                                        {% include(template_dir ~ 'standing/teams.html.twig') with {
+                                            championship: championship,
+                                            season: season,
+                                            teams: teams,
+                                        } only %}
+                                    </div>
+                                    <div class="tab-pane fade{% if tab is defined and tab == 1 %} show active{% endif %}" id="standing-scorers" role="tabpanel" aria-labelledby="standing-scorers-tab">
+                                        {% include(template_dir ~ 'standing/scorers.html.twig') with {
+                                            championship: championship,
+                                            season: season,
+                                            scorers: scorers,
+                                        } only %}
+                                    </div>
+                                </div>
+                            {% else %}
+                                {% include(template_dir ~ 'standing/scorers.html.twig') with {
+                                    championship: championship,
+                                    season: season,
+                                    scorers: scorers,
+                                } only %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

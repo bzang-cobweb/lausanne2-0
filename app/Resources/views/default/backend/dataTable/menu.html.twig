@@ -1,0 +1,46 @@
+{% if menu is defined and menu|length > 0 %}
+    <div class="col-md-8">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group" role="group" aria-label="First group">
+                {% for key,row in menu %}
+                    {% if row.type == 'link' %}
+                        <a class="btn btn-md btn-default mr-1 {% if key > 0 %} hidden-down{% endif %}" href="{% if row.link is defined %}{{ row.link }}{% endif %}">
+                            {% if row.label is defined %}{{ row.label }}{% endif %}
+                        </a>
+                    {% elseif row.type == 'dropdown' %}
+                        <div class="dropdown action mr-1 {% if key > 0 %} hidden-down{% endif %}">
+                            <button class="btn btn-md btn-gray dropdown-toggle disabled" type="button" id="dropdownMenuButton{{ key }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {% if row.label is defined %}{{ row.label }}{% endif %}
+                            </button>
+                            {% if row.actions is defined and row.actions|length > 0 %}
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ key }}">
+                                    {% for action in row.actions %}
+                                        <a class="dropdown-item" data-action="{{ action }}">
+                                            {% if action == 'delete' %}{{ 'action.delete'|trans }}{% endif %}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% elseif row.type == 'select' %}
+                        <div class="dropdown select mr-1 {% if key > 0 %} hidden-down{% endif %}">
+                            <button class="btn btn-md btn-gray dropdown-toggle" type="button" id="dropdownMenuButton{{ key }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ row.label }}
+                            </button>
+                            {% if row.items is defined and row.items|length > 0 %}
+                                <div class="dropdown-menu" data-selected="{% if row.selected is defined %}{{ row.selected }}{% endif %}" data-key="{{ row.key }}" aria-labelledby="dropdownMenuButton{{ key }}">
+                                    {% for val,item in row.items %}
+                                        <a class="dropdown-item{% if row.selected is defined and row.selected != '' and row.selected > 0 and row.selected == val %} active{% endif %}" data-value="{{ val }}">
+                                            {{ item }}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

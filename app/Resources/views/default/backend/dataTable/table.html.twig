@@ -1,0 +1,22 @@
+{% if dataTable.table is defined and dataTable.table|length > 0 %}
+    {% if dataTable.table.menu is defined or dataTable.table.search %}
+        <div class="row mb-4">
+            {% if dataTable.table.menu is defined and dataTable.table.menu|length > 0 %}
+                {% include(template_dir ~ 'dataTable/menu.html.twig') with {menu: dataTable.table.menu, template_dir: template_dir} only %}
+            {% endif %}
+            {% if dataTable.table.search is defined and dataTable.table.search %}
+                {% include(template_dir ~ 'dataTable/search.html.twig') with {words: dataTable.table.search.value} only %}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            {% include(template_dir ~ 'dataTable/content.html.twig') with {dataTable: dataTable, template_dir: template_dir} only %}
+
+            {% if dataTable.table.pagination.pages is defined and dataTable.table.pagination.pages|length > 0 %}
+                {% include(template_dir ~ 'dataTable/pagination.html.twig') with {pagination: dataTable.table.pagination, template_dir: template_dir} only %}
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

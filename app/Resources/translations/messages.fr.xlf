@@ -1,0 +1,659 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="success_install">
+                <source>success.install</source>
+                <target>Installation terminée!</target>
+            </trans-unit>
+            <trans-unit id="success_save">
+                <source>success.saved</source>
+                <target>Enregistrement Terminée!</target>
+            </trans-unit>
+            <trans-unit id="success_delete">
+                <source>success.deleted</source>
+                <target>Suppression terminée!</target>
+            </trans-unit>
+             <trans-unit id="success_uploaded">
+                 <source>success.uploaded</source>
+                 <target>Upload terminée!</target>
+             </trans-unit>
+
+            <trans-unit id="error_bad_token">
+                <source>error.bad_token</source>
+                <target>Bad token!</target>
+            </trans-unit>
+            <trans-unit id="error_bad_auth">
+                <source>error.bad_auth</source>
+                <target>Echec d'authentification!</target>
+            </trans-unit>
+            <trans-unit id="error_duplicated">
+                <source>error.duplicated</source>
+                <target>Existe déja!</target>
+            </trans-unit>
+            <trans-unit id="error_not_found">
+                <source>error.not_found</source>
+                <target>Introuvable!</target>
+            </trans-unit>
+            <trans-unit id="error_repeat_password">
+                <source>error.repeat_password</source>
+                <target>Mot de passe n'est pas identique</target>
+            </trans-unit>
+            <trans-unit id="error_unknown">
+                <source>error.unknown</source>
+                <target>Erreur inconnue!</target>
+            </trans-unit>
+            <trans-unit id="error_required">
+                <source>error.required</source>
+                <target>Obligatoire</target>
+            </trans-unit>
+            <trans-unit id="error_same_team">
+                <source>error.same_team</source>
+                <target>Local et visiteur doivent être différent</target>
+            </trans-unit>
+
+
+            <trans-unit id="user_email">
+                <source>user.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="user_first_name">
+                <source>user.first_name</source>
+                <target>prénom</target>
+            </trans-unit>
+            <trans-unit id="user_last_name">
+                <source>user.last_name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="user_informations">
+                <source>user.informations</source>
+                <target>Informations</target>
+            </trans-unit>
+            <trans-unit id="user_new_password">
+                <source>user.new_password</source>
+                <target>Nouveau mot de passe</target>
+            </trans-unit>
+            <trans-unit id="user_repeat_password">
+                <source>user.repeat_password</source>
+                <target>Répéter mot de passe</target>
+            </trans-unit>
+            <trans-unit id="user_change_password">
+                <source>user.change_password</source>
+                <target>Changer mot de passe</target>
+            </trans-unit>
+
+            <trans-unit id="team_name">
+                <source>team.name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="team_alias">
+                <source>team.alias</source>
+                <target>Alias</target>
+            </trans-unit>
+            <trans-unit id="team_players">
+                <source>team.players</source>
+                <target>Joueurs</target>
+            </trans-unit>
+            <trans-unit id="team_add">
+                <source>team.add</source>
+                <target>Ajouter équipe</target>
+            </trans-unit>
+            <trans-unit id="team_new">
+                <source>team.new</source>
+                <target>Nouvelle équipe</target>
+            </trans-unit>
+            <trans-unit id="team_description">
+                <source>team.description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="team_informations">
+                <source>team.informations</source>
+                <target>Informations</target>
+            </trans-unit>
+            <trans-unit id="team_championships">
+                <source>team.championships</source>
+                <target>Championnats</target>
+            </trans-unit>
+            <trans-unit id="team_no_teams">
+                <source>team.no_teams</source>
+                <target>Il n'y a actuellement aucun joueur dans l'équipe.</target>
+            </trans-unit>
+            <trans-unit id="team_matches">
+                <source>team.matches</source>
+                <target>Matches</target>
+            </trans-unit>
+            <trans-unit id="team_list">
+                <source>team.list</source>
+                <target>Equipes</target>
+            </trans-unit>
+
+            <trans-unit id="championship_name">
+                <source>championship.name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="championship_highlighted">
+                <source>championship.highlighted</source>
+                <target>Mettre en avant</target>
+            </trans-unit>
+            <trans-unit id="championship_teams">
+                <source>championship.teams</source>
+                <target>Equipes</target>
+            </trans-unit>
+            <trans-unit id="championship_add">
+                <source>championship.add</source>
+                <target>Ajouter championnat</target>
+            </trans-unit>
+            <trans-unit id="championship_new">
+                <source>championship.new</source>
+                <target>Nouveau championnat</target>
+            </trans-unit>
+             <trans-unit id="championship_informations">
+                 <source>championship.informations</source>
+                 <target>Informations</target>
+             </trans-unit>
+            <trans-unit id="championship_matches">
+                <source>championship.matches</source>
+                <target>Matches</target>
+            </trans-unit>
+            <trans-unit id="championship_list">
+                <source>championship.list</source>
+                <target>Championnats</target>
+            </trans-unit>
+            <trans-unit id="championship_cup">
+                <source>championship.cup</source>
+                <target>Coupe</target>
+            </trans-unit>
+
+            <trans-unit id="player_name">
+                <source>player.name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="player_alias">
+                <source>player.alias</source>
+                <target>Alias</target>
+            </trans-unit>
+            <trans-unit id="player_first_name">
+                <source>player.first_name</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="player_last_name">
+                <source>player.last_name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="player_add">
+                <source>player.add</source>
+                <target>Ajouter joueur</target>
+            </trans-unit>
+            <trans-unit id="player_new">
+                <source>player.new</source>
+                <target>Nouveau joueur</target>
+            </trans-unit>
+            <trans-unit id="player_description">
+                <source>player.description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="player_personal_informations">
+                <source>player.personal_informations</source>
+                <target>Informations</target>
+            </trans-unit>
+            <trans-unit id="player_teams">
+                <source>player.teams</source>
+                <target>Equipes</target>
+            </trans-unit>
+            <trans-unit id="player_list">
+                <source>player.list</source>
+                <target>Joueurs</target>
+            </trans-unit>
+
+
+            <trans-unit id="match_match">
+                <source>match.match</source>
+                <target>Match</target>
+            </trans-unit>
+            <trans-unit id="match_championship">
+                <source>match.championship</source>
+                <target>Championnat</target>
+            </trans-unit>
+            <trans-unit id="match_season">
+                <source>match.season</source>
+                <target>Saison</target>
+            </trans-unit>
+            <trans-unit id="match_add">
+                <source>match.add</source>
+                <target>Ajouter match</target>
+            </trans-unit>
+            <trans-unit id="match_new">
+                <source>match.new</source>
+                <target>Nouveau match</target>
+            </trans-unit>
+             <trans-unit id="match_result">
+                 <source>match.result</source>
+                 <target>Résultat</target>
+             </trans-unit>
+            <trans-unit id="match_home">
+                <source>match.home</source>
+                <target>Local</target>
+            </trans-unit>
+            <trans-unit id="match_visitor">
+                <source>match.visitor</source>
+                <target>Visiteur</target>
+            </trans-unit>
+            <trans-unit id="match_place">
+                <source>match.place</source>
+                <target>Lieu</target>
+            </trans-unit>
+             <trans-unit id="match_time">
+                 <source>match.time</source>
+                 <target>Date</target>
+             </trans-unit>
+            <trans-unit id="description">
+                <source>match.description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="match_list">
+                <source>match.list</source>
+                <target>Matches</target>
+            </trans-unit>
+            <trans-unit id="match_stage">
+                <source>match.stage</source>
+                <target>Phase</target>
+            </trans-unit>
+
+             <trans-unit id="news_add">
+                 <source>news.add</source>
+                 <target>Ajouter news</target>
+             </trans-unit>
+             <trans-unit id="news_new">
+                 <source>news.new</source>
+                 <target>Nouvelle news</target>
+             </trans-unit>
+
+
+
+            <trans-unit id="match_stage_0">
+                <source>match.stage_0</source>
+                <target>Groupe</target>
+            </trans-unit>
+            <trans-unit id="match_stage_32">
+                <source>match.stage_32</source>
+                <target>1/32 finale</target>
+            </trans-unit>
+            <trans-unit id="match_stage_16">
+                <source>match.stage_16</source>
+                <target>1/16 finale</target>
+            </trans-unit>
+             <trans-unit id="match_stage_8">
+                 <source>match.stage_8</source>
+                 <target>1/8 finale</target>
+             </trans-unit>
+            <trans-unit id="match_stage_4">
+                <source>match.stage_4</source>
+                <target>1/4 finale</target>
+            </trans-unit>
+            <trans-unit id="match_stage_2">
+                <source>match.stage_2</source>
+                <target>1/2 finale</target>
+            </trans-unit>
+            <trans-unit id="match_stage_1">
+                <source>match.stage_1</source>
+                <target>Finale</target>
+            </trans-unit>
+
+            <trans-unit id="result_goal">
+                <source>result.goal</source>
+                <target>But</target>
+            </trans-unit>
+             <trans-unit id="result_yellow_card">
+                 <source>result.yellow_card</source>
+                 <target>Carton jaune</target>
+             </trans-unit>
+            <trans-unit id="result_red_card">
+                <source>result.red_card</source>
+                <target>Carton rouge</target>
+            </trans-unit>
+
+            <trans-unit id="label_email">
+                <source>label.email</source>
+                <target>Adresse email</target>
+            </trans-unit>
+            <trans-unit id="label_password">
+                <source>label.password</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+            <trans-unit id="label_logo">
+                <source>label.logo</source>
+                <target>Lausanne 2-0</target>
+            </trans-unit>
+            <trans-unit id="label_my_account">
+                <source>label.my_account</source>
+                <target>Mon compte</target>
+            </trans-unit>
+            <trans-unit id="label_home">
+                <source>label.home</source>
+                <target>Accueil</target>
+            </trans-unit>
+            <trans-unit id="label_players">
+                <source>label.players</source>
+                <target>Joueurs</target>
+            </trans-unit>
+            <trans-unit id="label_player">
+                <source>label.player</source>
+                <target>Joueur</target>
+            </trans-unit>
+             <trans-unit id="label_teams">
+                 <source>label.teams</source>
+                 <target>Equipes</target>
+             </trans-unit>
+             <trans-unit id="label_team">
+                 <source>label.team</source>
+                 <target>Equipe</target>
+             </trans-unit>
+             <trans-unit id="label_name">
+                 <source>label.name</source>
+                 <target>Nom</target>
+             </trans-unit>
+             <trans-unit id="label_no_data_found">
+                 <source>label.no_data_found</source>
+                 <target>Aucun enregistrement trouvé</target>
+             </trans-unit>
+             <trans-unit id="label_championships">
+                 <source>label.championships</source>
+                 <target>Championnats</target>
+             </trans-unit>
+             <trans-unit id="label_since">
+                 <source>label.since</source>
+                 <target>Depuis</target>
+             </trans-unit>
+             <trans-unit id="label_matches">
+                 <source>label.matches</source>
+                 <target>Matches</target>
+             </trans-unit>
+             <trans-unit id="label_auto_goal">
+                 <source>label.auto_goal</source>
+                 <target>But contre son camp</target>
+             </trans-unit>
+             <trans-unit id="label_pictures">
+                 <source>label.pictures</source>
+                 <target>Images</target>
+             </trans-unit>
+             <trans-unit id="label_picture">
+                 <source>label.picture</source>
+                 <target>Image</target>
+             </trans-unit>
+             <trans-unit id="label_upload_picture">
+                 <source>label.upload_picture</source>
+                 <target>Upload Image</target>
+             </trans-unit>
+             <trans-unit id="label_title">
+                 <source>label.title</source>
+                 <target>Titre</target>
+             </trans-unit>
+             <trans-unit id="label_alt">
+                 <source>label.alt</source>
+                 <target>Alt</target>
+             </trans-unit>
+             <trans-unit id="label_info">
+                 <source>label.info</source>
+                 <target>Info</target>
+             </trans-unit>
+             <trans-unit id="label_file">
+                 <source>label.file</source>
+                 <target>Fichier</target>
+             </trans-unit>
+             <trans-unit id="label_gallery">
+                 <source>label.gallery</source>
+                 <target>Galerie</target>
+             </trans-unit>
+             <trans-unit id="label_teaser">
+                 <source>label.teaser</source>
+                 <target>Teaser</target>
+             </trans-unit>
+             <trans-unit id="label_championship">
+                 <source>label.championship</source>
+                 <target>Championnat</target>
+             </trans-unit>
+             <trans-unit id="label_content">
+                 <source>label.content</source>
+                 <target>Contenu</target>
+             </trans-unit>
+             <trans-unit id="label_updated">
+                 <source>label.updated</source>
+                 <target>Modifier</target>
+             </trans-unit>
+             <trans-unit id="label_by">
+                 <source>label.by</source>
+                 <target>Par</target>
+             </trans-unit>
+             <trans-unit id="label_news">
+                 <source>label.news</source>
+                 <target>Actualités</target>
+             </trans-unit>
+             <trans-unit id="label_cover_image">
+                 <source>label.cover_image</source>
+                 <target>Couverture</target>
+             </trans-unit>
+
+
+             <trans-unit id="news_list">
+                 <source>news.list</source>
+                 <target>News</target>
+             </trans-unit>
+
+             <trans-unit id="file_max_file_size">
+                 <source>file.max_file_size</source>
+                 <target>Taille maximale du fichier %s.</target>
+             </trans-unit>
+             <trans-unit id="file_accept_extensions">
+                 <source>file.accept_extensions</source>
+                 <target>Extensions acceptées [%s].</target>
+             </trans-unit>
+              <trans-unit id="file_upload_picture">
+                  <source>file.upload_picture</source>
+                  <target>Upload Image</target>
+              </trans-unit>
+              <trans-unit id="file_replace">
+                  <source>file.replace</source>
+                  <target>Choisir un fichier pour remplacer le fichier actuel ou laisser vide pour conserver le fichier actuel.</target>
+              </trans-unit>
+
+            <trans-unit id="button_sign_in">
+                <source>button.sign_in</source>
+                <target>Connexion</target>
+            </trans-unit>
+            <trans-unit id="button_sign_out">
+                <source>button.sign_out</source>
+                <target>Déconnexion</target>
+            </trans-unit>
+            <trans-unit id="button_home">
+                <source>button.home</source>
+                <target>Home</target>
+            </trans-unit>
+            <trans-unit id="button_save">
+                <source>button.save</source>
+                <target>Enregistrer</target>
+            </trans-unit>
+            <trans-unit id="button_save_and_add">
+                <source>button.save_and_add</source>
+                <target>Enregistrer et ajouter</target>
+            </trans-unit>
+            <trans-unit id="button_cancel">
+                <source>button.cancel</source>
+                <target>Fermer</target>
+            </trans-unit>
+            <trans-unit id="button_edit">
+                <source>button.edit</source>
+                <target>Editer</target>
+            </trans-unit>
+            <trans-unit id="button_upload">
+                <source>button.upload</source>
+                <target>Upload</target>
+            </trans-unit>
+            <trans-unit id="button_save_and_upload">
+                <source>button.save_and_upload</source>
+                <target>Enregister et Ajouter</target>
+            </trans-unit>
+
+
+
+
+            <trans-unit id="admin_button_add_player">
+                <source>admin.button.add_player</source>
+                <target>Ajouter joueur</target>
+            </trans-unit>
+            <trans-unit id="admin_button_actions">
+                <source>admin.button.actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="admin_button_delete">
+                <source>admin.button.delete</source>
+                <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="admin_button_go">
+                <source>admin.button.go</source>
+                <target>Recherche</target>
+            </trans-unit>
+
+            <trans-unit id="admin_label_players">
+                <source>admin.label.players</source>
+                <target>Joueurs</target>
+            </trans-unit>
+            <trans-unit id="admin_label_search">
+                <source>admin.label.search</source>
+                <target>Recherche</target>
+            </trans-unit>
+
+            <trans-unit id="action_delete">
+                <source>action.delete</source>
+                <target>Supprimer la sélection</target>
+            </trans-unit>
+
+            <trans-unit id="label_results">
+                <source>label.results</source>
+                <target>Résultats</target>
+            </trans-unit>
+            <trans-unit id="label.standings">
+                <source>label.standings</source>
+                <target>Classements</target>
+            </trans-unit>
+            <trans-unit id="label_standing">
+                <source>label.standing</source>
+                <target>Classement</target>
+            </trans-unit>
+            <trans-unit id="label_calendar">
+                <source>label.calendar</source>
+                <target>Calendrier</target>
+            </trans-unit>
+            <trans-unit id="label_scorers">
+                <source>label.scorers</source>
+                <target>Buteurs</target>
+            </trans-unit>
+            <trans-unit id="label_updatedAt">
+                <source>label.updatedAt</source>
+                <target>Mis à jour le</target>
+            </trans-unit>
+            <trans-unit id="label_red_card">
+                <source>label.red_card</source>
+                <target>Carton rouge</target>
+            </trans-unit>
+            <trans-unit id="label_yellow_card">
+                <source>label.yellow_card</source>
+                <target>Carton jaune</target>
+            </trans-unit>
+
+            <trans-unit id="label_g">
+                <source>label.g</source>
+                <target>BP</target>
+            </trans-unit>
+            <trans-unit id="label_ag">
+                <source>label.ag</source>
+                <target>CSC</target>
+            </trans-unit>
+            <trans-unit id="label_p">
+                <source>label.p</source>
+                <target>J</target>
+            </trans-unit>
+            <trans-unit id="label_w">
+                <source>label.w</source>
+                <target>G</target>
+            </trans-unit>
+            <trans-unit id="label_d">
+                <source>label.d</source>
+                <target>N</target>
+            </trans-unit>
+            <trans-unit id="label_pts">
+                <source>label.pts</source>
+                <target>Pts</target>
+            </trans-unit>
+            <trans-unit id="label_l">
+                <source>label.l</source>
+                <target>P</target>
+            </trans-unit>
+            <trans-unit id="label_ga">
+                <source>label.ga</source>
+                <target>BC</target>
+            </trans-unit>
+            <trans-unit id="label_goals">
+                <source>label.goals</source>
+                <target>Buts</target>
+            </trans-unit>
+            <trans-unit id="label_stats">
+                <source>label.stats</source>
+                <target>Stats</target>
+            </trans-unit>
+            <trans-unit id="label_general">
+                <source>label.general</source>
+                <target>Général</target>
+            </trans-unit>
+            <trans-unit id="label_domicile">
+                <source>label.domicile</source>
+                <target>Domicile</target>
+            </trans-unit>
+            <trans-unit id="label_exterior">
+                <source>label.exterior</source>
+                <target>Extérieur</target>
+            </trans-unit>
+            <trans-unit id="label_goals_for">
+                <source>label.goals_for</source>
+                <target>Buts pour</target>
+            </trans-unit>
+            <trans-unit id="label_goals_against">
+                <source>label.goals_against</source>
+                <target>Buts contre</target>
+            </trans-unit>
+            <trans-unit id="label_yellows_cards">
+                <source>label.yellows_cards</source>
+                <target>Cartons jaunes</target>
+            </trans-unit>
+            <trans-unit id="label_reds_cards">
+                <source>label.reds_cards</source>
+                <target>Cartons rouges</target>
+            </trans-unit>
+
+            <trans-unit id="error_status_code">
+                <source>error.status_code</source>
+                <target>Erreur %code%</target>
+            </trans-unit>
+            <trans-unit id="error_404">
+                <source>error.404</source>
+                <target>Page introuvable.</target>
+            </trans-unit>
+            <trans-unit id="error_500">
+                <source>error.500</source>
+                <target>Erreur interne du serveur.</target>
+            </trans-unit>
+
+            <trans-unit id="meta_title">
+                <source>meta.title</source>
+                <target>Lausanne 2-0 football</target>
+            </trans-unit>
+            <trans-unit id="meta_desc">
+                <source>meta.desc</source>
+                <target>Lausanne 2-0 football actualités, résultats, classements, équipes et joueurs</target>
+            </trans-unit>
+            <trans-unit id="meta_keys">
+                <source>meta.keys</source>
+                <target>Suisse, Vaud, Lausanne, Cameroun, football, deux, zéro</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

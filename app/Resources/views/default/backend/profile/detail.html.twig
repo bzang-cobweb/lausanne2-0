@@ -1,0 +1,22 @@
+{% if admin is defined and admin %}
+    <div class="content-block" id="player-personal">
+        <h3><a href="{{ path('admin_edit_profile_route') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></h3>
+        <hr>
+        <div class="row">
+            <div class="col-4 text-right"><label>{{ 'user.first_name'|trans }}</label></div>
+            <div class="">{{ admin.firstname }}</div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-right"><label>{{ 'user.last_name'|trans }}</label></div>
+            <div class="">{{ admin.lastname }}</div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-right"><label>{{ 'user.email'|trans }}</label></div>
+            <div class="">{{ admin.email }}</div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-right"><label>{{ 'label.since'|trans }}</label></div>
+            <div class="">{{ admin.createdAt|date('d.m.Y') }}</div>
+        </div>
+    </div>
+{% endif %}

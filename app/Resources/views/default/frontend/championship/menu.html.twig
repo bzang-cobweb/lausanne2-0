@@ -1,0 +1,21 @@
+{% if championship is defined and championship and view is defined and view and season is defined and season %}
+    <section id="menu">
+        <ul class="menu">
+            <li>
+                <a class="{% if view == 'news' %}active{% endif %}" href="{{ path('championship_news_route', {'id': championship.id, 'season': season}) }}">
+                    {{ 'label.news'|trans }}
+                </a>
+            </li>
+            <li>
+                <a class="{% if view == 'results' %}active{% endif %}" href="{{ path('championship_match_route', {'id': championship.id, 'season': season}) }}">
+                    {{ 'label.results'|trans }}
+                </a>
+            </li>
+            <li>
+                <a class="{% if view == 'standings' %}active{% endif %}" href="{{ path('championship_standings_route', {'id': championship.id, 'season': season}) }}">
+                    {{ 'label.standings'|trans }}
+                </a>
+            </li>
+        </ul>
+    </section>
+{% endif %}

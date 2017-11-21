@@ -1,0 +1,15 @@
+{% set theme = 'default' %}
+{% extends  'default/frontend/layout/no_menu.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mt-15 text-center">{{ 'error.status_code'|trans({'%code%': status_code}) }}</h1>
+            {% if(status_code == 404 or status_code == 500) %}
+                <p class="mt-15 text-center">{{ ('error.' ~ status_code)|trans }}</p>
+            {% else %}
+                <p class="mt-15">{{ status_text }}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends  'default/frontend/layout/12.html.twig' %}
+
+{% block menu %}
+    {% include(template_dir ~ 'championship/menu.html.twig') with {
+        championship: match.championship,
+        season: match.season,
+        template_dir: template_dir,
+        'view': 'results'
+    } only %}
+{% endblock %}
+
+{% block image %}
+    <article class="article-match">
+        <header class="flex-wrap">
+            <div class="team">
+                <a href="{{ path('team_route',
+                        {
+                            'championship': match.championship.id,
+                            'season': match.season,
+                            'id': match.home.id
+                        })
+                    }}" class="team-name classic">
+                    {{  match.home|capitalize }}
+                </a>
+                {% include(template_dir ~ 'match/goal.html.twig') with {
+                    matchPlayers: match.getHomePlayers,
+                    championship: match.championship,
+                    season: match.season
+                } only %}
+            </div>
+            <div class="result">
+                <span class="score">
+                    {% if match.result %}
+                        {{ match.result.homeGoal }} - {{ match.result.visitorGoal }}
+                    {% else %}
+                        {{ match.scheduledAt|date('H:i') }}
+                    {% endif %}
+                </span>
+                <span class="date text-center">{{ match.scheduledAt|date('d.m.Y') }}</span>
+                {% if match.place %}
+                    <span class="date text-center">{{ match.place|capitalize }}</span>
+                {% endif %}
+            </div>
+            <div class="team">
+                <a href="{{ path('team_route',
+                        {
+                            'championship': match.championship.id,
+                            'season': match.season,
+                            'id': match.visitor.id
+                        })
+                    }}" class="team-name classic">
+                    {{ match.visitor|capitalize }}
+                </a>
+                {% include(template_dir ~ 'match/goal.html.twig') with {
+                    matchPlayers: match.getVisitorPlayers,
+                    championship: match.championship,
+                    season: match.season
+                } only %}
+            </div>
+            <div class="championship d-flex flex-column text-center width-100 mt-15">
+                <a class="classic" href="{{ path('championship_match_route', {'id': match.championship.id, 'season': match.season}) }}">
+                    {{  match.championship|capitalize }}
+                </a>
+                {% if match.championship.cup and match.stage %}
+                    <span class="">{{ ('match.stage_' ~ match.stage)|trans }}</span>
+                {% endif %}
+            </div>
+        </header>
+    </article>
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div id="content" class="article-match">
+                    {% if match.result %}
+                        <div class="mt-15 bg-gray pl-1">
+                            {{ 'label.stats'|trans }}
+                        </div>
+                        <div class="d-flex mt-15">
+                            <div class="text-left flex-row width-100 font-bold">{{ match.result.homeYellowCard }}</div>
+                            <div class="text-center flex-row width-100">{{ 'label.yellows_cards'|trans }}</div>
+                            <div class="text-right flex-row width-100 font-bold">{{ match.result.visitorYellowCard }}</div>
+                        </div>
+                        <div class="d-flex mt-15 mb-15">
+                            <div class="text-left flex-row width-100 font-bold">{{ match.result.homeRedCard }}</div>
+                            <div class="text-center flex-row width-100">{{ 'label.reds_cards'|trans }}</div>
+                            <div class="text-right flex-row width-100  font-bold">{{ match.result.visitorRedCard }}</div>
+                        </div>
+                    {% elseif match.description  %}
+                        <div class="d-flex flex-column mt-15">{{ match.description|nl2br }}</div>
+                    {% endif %}
+
+                    {% if match.matchPlayers|length > 0 %}
+                        <div class="mt-15 bg-gray pl-1">
+                            {{ 'label.players'|trans }}
+                        </div>
+                        <div class="mt-15 d-flex">
+                            <div class="text-left flex-row width-100">
+                                {% include(template_dir ~ 'match/players.html.twig') with {
+                                    matchPlayers: match.getHomePlayers,
+                                    championship: match.championship,
+                                    season: match.season
+                                } only %}
+                            </div>
+                            <div class="text-right flex-row width-100">
+                                {% include(template_dir ~ 'match/players.html.twig') with {
+                                    matchPlayers: match.getVisitorPlayers,
+                                    championship: match.championship,
+                                    season: match.season
+                                } only %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if match.pictures|length > 0 %}
+                        <div class="mt-15">
+                            <ul class="nav nav-tabs" id="matchTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active"
+                                       id="match-gallery-tab" data-toggle="tab" href="#match-gallery" role="tab"
+                                       aria-controls="match-gallery" aria-selected="true">
+                                        {{ 'label.gallery'|trans }}
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="matchTabContent">
+                                <div class="tab-pane fade show active" id="match-gallery" role="tabpanel" aria-labelledby="match-gallery-tab">
+                                    <div class="mt-15">
+                                        {% include(template_dir ~ 'image_gallery.html.twig') with {
+                                            pictures: match.pictures
+                                        } only %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

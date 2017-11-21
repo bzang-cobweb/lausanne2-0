@@ -1,0 +1,33 @@
+{% if homePlayers is defined and visitorPlayers is defined %}
+    <div class="row mb-3">
+        <div class="col-12 text-center">
+            <label class="mb-0">{{ 'result.goal'|trans }}</label>
+        </div>
+        <div class="col-6 text-right">
+            {% if homePlayers|length > 0 %}
+                <ul>
+                    {% for matchPlayer in homePlayers %}
+                        {% if matchPlayer.goal > 0 %}
+                            <li>
+                                <a href="{{ path('admin_add_match_player_route', {id: matchPlayer.id}) }}">{{ matchPlayer.player }} {% for i in 1..matchPlayer.goal %}<i class="fa fa-futbol-o" aria-hidden="true"></i>{% endfor %}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="col-6 text-left">
+            {% if visitorPlayers|length > 0 %}
+                <ul>
+                    {% for matchPlayer in visitorPlayers %}
+                        {% if matchPlayer.goal > 0 %}
+                            <li>
+                                <a href="{{ path('admin_add_match_player_route', {id: matchPlayer.id}) }}">{{ matchPlayer.player }} {% for i in 1..matchPlayer.goal %}<i class="fa fa-futbol-o" aria-hidden="true"></i>{% endfor %}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

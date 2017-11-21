@@ -1,0 +1,48 @@
+{% if matchPlayer is defined and matchPlayer %}
+    <div class="window-header">
+        <a class="match-player delete-element" href="{{ path('admin_delete_match_player_route', {id: matchPlayer.id}) }}">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="window-content">
+        <div class="window-row">
+            <a href="{{ path('admin_edit_match_player_route', {id: matchPlayer.id}) }}">
+                {{ matchPlayer.player }}
+            </a>
+        </div>
+        {% if matchPlayer.goal > 0 %}
+            <div class="window-row">
+                <a href="{{ path('admin_edit_match_player_route', {id: matchPlayer.id}) }}">
+                    {% for i in 1..matchPlayer.goal %}
+                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                    {% endfor %}
+                </a>
+            </div>
+        {% endif %}
+        {% if matchPlayer.autoGoal > 0 %}
+            <div class="window-row">
+                <a href="{{ path('admin_edit_match_player_route', {id: matchPlayer.id}) }}">
+                    {% for i in 1..matchPlayer.autoGoal %}
+                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                    {% endfor %}(csc)
+                </a>
+            </div>
+        {% endif %}
+        {% if matchPlayer.yellowCard > 0 %}
+            <div class="window-row">
+                <a href="{{ path('admin_edit_match_player_route', {id: matchPlayer.id}) }}">
+                    {% for i in 1..matchPlayer.yellowCard if i < 3 %}
+                        <span class="yellow-card"></span>
+                    {% endfor %}
+                </a>
+            </div>
+        {% endif %}
+        {% if matchPlayer.redCard > 0 or matchPlayer.yellowCard > 1 %}
+            <div class="window-row">
+                <a href="{{ path('admin_edit_match_player_route', {id: matchPlayer.id}) }}">
+                    <span class="red-card"></span>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

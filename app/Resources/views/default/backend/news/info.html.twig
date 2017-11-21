@@ -1,0 +1,41 @@
+
+{% if news is defined and news %}
+    <div>
+        <h3><a href="{{ path('admin_add_edit_news_route', {id: news.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></h3>
+        <hr>
+        <div class="row">
+            <div class="col-4 text-right"><label>{{ 'label.title'|trans }}</label></div>
+            <div class="col-8">{{ news.title }}</div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-right"><label>{{ 'label.teaser'|trans }}</label></div>
+            <div class="col-8 mb-2">{{ news.teaser|nl2br }}</div>
+        </div>
+        {% if news.championship %}
+            <div class="row">
+                <div class="col-4 text-right"><label>{{ 'label.championship'|trans }}</label></div>
+                <div class="col-8"><a href="{{ path('admin_detail_championship_route', {id: news.championship.id}) }}">{{ news.championship }}</a></div>
+            </div>
+        {% endif %}
+        {% if news.body %}
+            <div class="row">
+                <div class="col-4 text-right"><label>{{ 'label.content'|trans }}</label></div>
+                <div class="col-8 mb-2">{{ news.body|nl2br }}</div>
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-4 text-right"><label>{{ 'label.since'|trans }}</label></div>
+            <div class="col-8">{{ news.createdAt|date('d.m.Y') }}</div>
+        </div>
+        {% if news.updatedAt %}
+            <div class="row">
+                <div class="col-4 text-right"><label>{{ 'label.updated'|trans }}</label></div>
+                <div class="col-8">{{ news.updatedAt|date('d.m.Y') }}</div>
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-4 text-right"><label>{{ 'label.by'|trans }}</label></div>
+            <div class="col-8">{{ news.author }}</div>
+        </div>
+    </div>
+{% endif %}

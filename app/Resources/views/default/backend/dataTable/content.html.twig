@@ -1,0 +1,17 @@
+{% if dataTable.table.fields is defined and dataTable.table.fields|length > 0 %}
+    <table class="table" data-url="{{ path(dataTable.router.route, dataTable.router.params) }}">
+        {% include(template_dir ~ 'dataTable/header.html.twig') with {table: dataTable.table} only %}
+        {% if dataTable.data is defined and dataTable.data|length > 0 %}
+            {% include(template_dir ~ 'dataTable/body.html.twig') with {
+                records: dataTable.data,
+                checkAll: dataTable.table.checkAll is defined and dataTable.table.checkAll
+            } only %}
+        {% else %}
+            <tbody>
+                <tr>
+                    <td class="text-center" colspan="{{ dataTable.totalNumberOfFields }}">{{ 'label.no_data_found'|trans }}</td>
+                </tr>
+            </tbody>
+        {% endif %}
+    </table>
+{% endif %}

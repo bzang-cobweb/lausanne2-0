@@ -1,0 +1,21 @@
+{% if championship is defined and championship and view is defined and view and season is defined and season %}
+    <div class="headline">
+        <span class="head">{{ championship }}</span>
+        <div class="dropdown d-block">
+            <span class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ ('label.' ~ view )|trans }}
+            </span>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item{% if view == 'news' %} active{% endif %}" href="{{ path('championship_news_route', {'id': championship.id, 'season': season}) }}">
+                    {{ 'label.news'|trans }}
+                </a>
+                <a class="dropdown-item{% if view == 'results' %} active{% endif %}" href="{{ path('championship_match_route', {'id': championship.id, 'season': season}) }}">
+                    {{ 'label.results'|trans }}
+                </a>
+                <a class="dropdown-item{% if view == 'standings' %} active{% endif %}" href="{{ path('championship_standings_route', {'id': championship.id, 'season': season}) }}">
+                    {{ 'label.standings'|trans }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endif %}

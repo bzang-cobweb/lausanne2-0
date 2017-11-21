@@ -1,0 +1,28 @@
+{% if match is defined and match %}
+    <div>
+        <h3><a href="{{ path('admin_add_match_picture_route', {id: match.id}) }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a></h3>
+
+        {% if match.pictures|length > 0 %}
+            <hr>
+            <div class="row">
+                <div class="col-12">
+                    <div class="be-gallery">
+                        {% for picture in match.pictures %}
+                            <div class="box" id="picture-{{ picture.id }}">
+                                <div class="picture">
+                                    <a href="">
+                                        <img src="{{ asset(picture.pathname) | imagine_filter('thumbnail') }}" width="200" height="100"/>
+                                    </a>
+                                    <div class="action">
+                                        <a href="{{ path('admin_edit_match_picture_route', {id: picture.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                        <a class="delete-element" href="{{ path('admin_delete_picture_route', {id: picture.id}) }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

@@ -1,0 +1,21 @@
+{% if pagination.pages is defined and pagination.pages|length > 3 %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% for page in pagination.pages %}
+                {% if page.router.route is defined %}
+                    <li class="page-item">
+                        <a class="page-link" data-page="{{ page.number }}" href="{{ path(page.router.route, page.router.params) }}">
+                            {{ page.label|raw }}
+                        </a>
+                    </li>
+                {% elseif page.active is defined %}
+                    <li class="page-item active">
+                        <a class="page-link" href="#">{{ page.label|raw }}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link" href="#">{{ page.label|raw }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+{% endif %}

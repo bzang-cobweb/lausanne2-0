@@ -1,0 +1,31 @@
+{% extends  'default/frontend/layout/12.html.twig' %}
+
+{% block menu %}
+    {% include(template_dir ~ 'championship/menu.html.twig') with {
+        championship: championship,
+        season: season,
+        template_dir: template_dir,
+        'view': 'news'
+    } only %}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div id="content">
+                    {% include(template_dir ~ 'championship/headline.html.twig') with {
+                        championship: championship,
+                        season: season,
+                        template_dir: template_dir,
+                        'view': 'news'
+                    } only %}
+                    <div id="news-block" class="block news-gallery">
+                        <button data-url="{{ path('news_route', {'championship': championship.id}) }}" class="html-replace loader" id="news-loader"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

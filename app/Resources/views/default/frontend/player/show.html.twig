@@ -1,0 +1,74 @@
+{% extends  'default/frontend/layout/12.html.twig' %}
+
+{% block menu %}
+    {{ include(template_dir ~ 'menu.html.twig')}}
+{% endblock %}
+
+{% block image %}
+    {% include(template_dir ~ 'opacity.html.twig') with {
+        title: player,
+        teaser: player.trigram,
+        content: player.description
+    } only %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div id="content">
+                    {% include(template_dir ~ 'player/headline.html.twig') with {
+                        championship: championship,
+                        championships: championships,
+                        player: player,
+                        season: season,
+                        template_dir: template_dir
+                    } only %}
+                    <div id="player-block" class="block">
+                        <div id="top-block">
+                            {% include(template_dir ~ 'player/seasons.html.twig') with {
+                                championship: championship,
+                                player: player,
+                                season: season,
+                                seasons: seasons
+                            } only %}
+                        </div>
+                        <div class="player">
+                            <ul class="nav nav-tabs" id="playerTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="player-stats-tab" data-toggle="tab" href="#player-stats" role="tab" aria-controls="player-stats" aria-selected="true">
+                                        {{ 'label.stats'|trans }}
+                                    </a>
+                                </li>
+                                {% if pictures is defined and pictures|length > 0 %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="player-gallery-tab" data-toggle="tab" href="#player-gallery" role="tab" aria-controls="player-gallery" aria-selected="false">
+                                            {{ 'label.gallery'|trans }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                            <div class="tab-content" id="playerTabContent">
+                                <div class="tab-pane fade  show active" id="player-stats" role="tabpanel" aria-labelledby="player-stats-tab">
+                                    {% include(template_dir ~ 'player/stats.html.twig') with {
+                                        stats: stats,
+                                        cup: championship.cup
+                                    } only %}
+                                </div>
+                                {% if pictures is defined and pictures|length > 0 %}
+                                    <div class="tab-pane fade" id="player-gallery" role="tabpanel" aria-labelledby="player-gallery-tab">
+                                        <div class="mt-15">
+                                            {% include(template_dir ~ 'image_gallery.html.twig') with {
+                                                pictures: player.pictures
+                                            } only %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

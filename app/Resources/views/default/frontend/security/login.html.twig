@@ -1,0 +1,35 @@
+{% extends  'default/frontend/layout/no_menu.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <p class="mb-4 h2 mt-15">
+                <i class="fa fa-user prefix"></i>
+                <strong class="ml-2">{{ 'button.sign_in'|trans }}</strong>
+            </p>
+
+            {% if error %}
+                <div class="alert alert-danger mb-30" role="alert">
+                    {{ 'error.bad_auth'|trans }}
+                </div>
+            {% endif %}
+
+            <form action="{{ path('login_check_route') }}" method="post">
+                <div class="md-form">
+                    <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" />
+                    <label for="username" class="">{{ 'label.email'|trans }}</label>
+                </div>
+
+                <div class="md-form">
+                    <input type="password" class="form-control" id="password" name="_password" />
+                    <label for="password" class="">{{ 'label.password'|trans }}</label>
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                <button type="submit" class="btn btn-default waves-effect waves-light">{{ 'button.sign_in'|trans }}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

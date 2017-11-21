@@ -1,0 +1,8 @@
+{% if picture is defined and picture %}
+    <section id="main-image">
+        <img class="" alt="{{ picture.alt }}" title="{{ picture.title }}" src="{{ asset(picture.pathname) | imagine_filter('original') }}" />
+        {% if picture.title %}
+            <p>{{ picture.title|capitalize }}</p>
+        {% endif %}
+    </section>
+{% endif %}

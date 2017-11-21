@@ -1,0 +1,14 @@
+{% if news is defined and news|length > 0 %}
+    {% for pos,n in news %}
+        {% set position = pos % 3 %}
+        {% include(template_dir ~ 'news/list_row.html.twig') with {
+            news: n,
+            season: season,
+            position: position,
+            template_dir: template_dir
+        } only %}
+    {% endfor %}
+    {% if news_next_page is defined %}
+        <button data-url="{{ news_next_page }}" class="html-replace loader" id="news-loader"></button>
+    {% endif %}
+{% endif %}

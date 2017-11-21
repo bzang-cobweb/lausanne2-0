@@ -1,0 +1,65 @@
+{% extends  'default/frontend/layout/12.html.twig' %}
+
+{% block image %}
+    {% include(template_dir ~ 'image.html.twig') with {
+        picture: news.cover
+    } only %}
+{% endblock %}
+
+{% block menu %}
+    {% include(template_dir ~ 'championship/menu.html.twig') with {
+        championship: news.championship,
+        season: season,
+        template_dir: template_dir,
+        'view': 'news'
+    } only %}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div id="content" class="article">
+                    <article class="article-news">
+                        <header>
+                            <h1>{{ news.title|capitalize }}</h1>
+                            <div class="article-date">
+                                {{ 'label.by'|trans }} {{ news.author }} -
+                                <time itemprop="datePublished" datetime="{{ news.createdAt|date('Y-m-d\TH:i:s.u') }}">{{ news.createdAt|date('d.m.Y H:i') }}</time>
+                                {% if news.updatedAt %}
+                                    | {{ 'label.updatedAt'|trans }}
+                                    <time itemprop="dateModified" datetime="{{ news.updatedAt|date('Y-m-d\TH:i:s.u') }}">
+                                        {{ news.updatedAt|date('d.m.Y H:i') }}
+                                    </time>
+                                {% endif %}
+                            </div>
+                            <h2>{{ news.teaser|nl2br }}</h2>
+                        </header>
+                        <div class="wrapper">
+                            {% if news.pictures|length > 1 %}
+                                <div class="article-content">
+                                    <div class="mb-15">{{ news.body|nl2br }}</div>
+                                    <div class="article-gallery">
+                                        {% include(template_dir ~ 'thumbnail.html.twig') with {
+                                            pictures: news.pictures,
+                                            cover: news.cover
+                                        } only %}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="article-content">{{ news.body|nl2br }}</div>
+                                <div class="article-gallery min">
+                                    {% include(template_dir ~ 'thumbnail.html.twig') with {
+                                        pictures: news.pictures,
+                                        cover: news.cover
+                                    } only %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

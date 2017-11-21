@@ -1,0 +1,11 @@
+{% if id is defined and id > 0%}
+    <div>
+        <h3><a href="{{ path('admin_add_edit_championship_route', {id: id, tab: 2}) }}#championship_teams"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></h3>
+        <hr>
+        <div class="row">
+            <div id="championship-teams" class="col-12 dataTable html-loader" data-url="{{ path('admin_ct_team_route', {id: id}) }}">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+{% endif %}

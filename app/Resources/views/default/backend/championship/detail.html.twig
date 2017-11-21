@@ -1,0 +1,49 @@
+{% extends  'default/backend/layout/12.html.twig' %}
+
+{% block body %}
+    {% if championship is defined and championship %}
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link{% if tab == 0 %} active{% endif %}" id="info-tab"
+                   data-toggle="tab" href="#info" role="tab" aria-controls="info"
+                   aria-selected="{% if tab == 0 %}true{% else %}false{% endif %}">
+                    <span class="d-block d-md-none">
+                        <i class="fa fa-info" aria-hidden="true"></i>
+                    </span>
+                    <span class="d-none d-md-block">{{ 'label.info'|trans }}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if tab == 1 %} active{% endif %}" id="matches-tab"
+                   data-toggle="tab" href="#matches" role="tab" aria-controls="matches"
+                   aria-selected="{% if tab == 1 %}true{% else %}false{% endif %}">
+                    <span class="d-block d-md-none">
+                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                    </span>
+                    <span class="d-none d-md-block">{{ 'label.matches'|trans }}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if tab == 2 %} active{% endif %}" id="teams-tab"
+                   data-toggle="tab" href="#teams" role="tab" aria-controls="teams"
+                   aria-selected="{% if tab == 2 %}true{% else %}false{% endif %}">
+                    <span class="d-block d-md-none">
+                        <i class="fa fa-group" aria-hidden="true"></i>
+                    </span>
+                    <span class="d-none d-md-block"></i> {{ 'label.teams'|trans }}</span>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content content-block" id="myTabContent">
+            <div class="tab-pane fade{% if tab == 0 %} show active{% endif %}" id="info" role="tabpanel" aria-labelledby="info-tab">
+                {{ include(template_dir ~ 'championship/info.html.twig') }}
+            </div>
+            <div class="tab-pane fade{% if tab == 1 %} show active{% endif %}" id="matches" role="tabpanel" aria-labelledby="matches-tab">
+                {% include(template_dir ~ 'championship/matches.html.twig') with {id: championship.id} only %}
+            </div>
+            <div class="tab-pane fade{% if tab == 2 %} show active{% endif %}" id="teams" role="tabpanel" aria-labelledby="teams-tab">
+                {% include(template_dir ~ 'championship/teams.html.twig') with {id: championship.id} only %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

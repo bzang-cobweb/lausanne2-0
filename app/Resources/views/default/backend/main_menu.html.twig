@@ -1,0 +1,20 @@
+{% if menu is defined and menu|length > 0 %}
+    {% for key,groups in menu %}
+        {% if groups|length > 0 %}
+            {% for group in groups %}
+                {% if group|length > 0 %}
+                    <div class="list-group {% if key == 'sub' %} hidden-up{% endif %}">
+                        {% for item in group %}
+                            <a class="list-group-item{% if item.class is defined and item.class != '' %} {{ item.class }}{% endif %}"
+                               href="{% if item.route is defined and item.route != '' %}{{ path(item.route) }}{% else %}#{% endif %}">
+                                {% if item.icon is defined and item.icon != '' %}<i class="fa fa-{{ item.icon }} fa-fw" aria-hidden="true"></i>{% endif %}
+                                {% if item.label is defined and item.label != '' %}{{ item.label|trans }}{% endif %}
+                                {% if item.total is defined %}<span class="badge badge-secondary">{{ item.total }}</span>{% endif %}
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+{% endif %}

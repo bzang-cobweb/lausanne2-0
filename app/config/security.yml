@@ -1,0 +1,41 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        database:
+            entity:
+                class: AppBundle:User
+                property: username
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        default:
+            pattern: /
+            provider: database
+            anonymous: true
+            form_login:
+                login_path: /sign-in
+                check_path: /login_check
+                success_handler: login_success_handler
+                csrf_token_generator: security.csrf.token_manager
+            logout:
+                path: /sign-out
+                target: /
+                success_handler: logout_success_handler
+                invalidate_session: true
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    access_control:
+            # require ROLE_ADMIN for /cwadmin
+            - { path: ^/admin, roles: ROLE_ADMIN }
+            - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }

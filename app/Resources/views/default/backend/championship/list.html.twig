@@ -1,0 +1,9 @@
+{% extends  'default/backend/layout/12.html.twig' %}
+
+{% block body %}
+    {% if dataTable is defined and dataTable %}
+        <div id="championships" class="content-block dataTable">
+            {{ include(template_dir ~ 'dataTable/table.html.twig') }}
+        </div>
+    {% endif %}
+{% endblock %}

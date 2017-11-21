@@ -1,0 +1,33 @@
+{% if championship is defined and championship
+   and seasons is defined and seasons|length > 0
+   and view is defined and view
+   and season is defined %}
+    <div class="dropdown d-block text-center mt-15 mb-15">
+        <span class="dropdown-toggle" role="button" id="dropdownMenuLinkSeason" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ season }}
+        </span>
+        {% if seasons is defined and seasons|length > 0 %}
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkSeason">
+                {% for s in seasons %}
+                    {% if view == 'news' %}
+                        <a class="dropdown-item" href="{{ path('championship_news_route', {'id': championship.id, 'season': s}) }}">
+                            {{ s }}
+                        </a>
+                    {% elseif view == 'results' %}
+                        <a class="dropdown-item" href="{{ path('championship_match_route', {'id': championship.id, 'season': s}) }}">
+                            {{ s }}
+                        </a>
+                    {% elseif view == 'standings' %}
+                        <a class="dropdown-item" href="{{ path('championship_standings_route', {'id': championship.id, 'season': s}) }}">
+                            {{ s }}
+                        </a>
+                    {% elseif view == 'scorers' %}
+                        <a class="dropdown-item" href="{{ path('championship_scorer_route', {'id': championship.id, 'season': s}) }}">
+                            {{ s }}
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

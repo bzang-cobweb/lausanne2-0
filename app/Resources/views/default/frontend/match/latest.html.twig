@@ -1,0 +1,23 @@
+{% if match is defined and match %}
+    <a class="latest-item classic" href="{{ path('match_detail_route', {'id': match.id, 'championship': match.championship.id, 'season': match.season}) }}">
+        <div class="team">{{ match.home|capitalize }}</div>
+        <div class="result">
+            <span class="score">
+                {% if match.result %}
+                    {{ match.result.homeGoal }} - {{ match.result.visitorGoal }}
+                {% else %}
+                    {{ match.scheduledAt|date('H:i') }}
+                {% endif %}
+            </span>
+            {% if match.stage %}
+                <span class="date">
+                    {{ ('match.stage_' ~ match.stage)|trans }}
+                </span>
+            {% endif %}
+            <span class="date">
+                {{ match.scheduledAt|date('d.m.Y') }}
+            </span>
+        </div>
+        <div class="team text-right">{{ match.visitor|capitalize }}</div>
+    </a>
+{% endif %}

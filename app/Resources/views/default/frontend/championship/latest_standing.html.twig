@@ -1,0 +1,61 @@
+{% if championship is defined and standing is defined and season is defined and season %}
+    <div class="latest-headline">
+        <a class="classic" href="{{ path('championship_news_route', {'id': championship.id, 'season': season}) }}">{{ championship|capitalize }}</a>
+    </div>
+    {% if standing.teams is defined and standing.teams|length > 0 %}
+        <div class="latest-headline2">
+            <a href="{{ path('championship_standings_route', {'id': championship.id, 'season': season}) }}" class="classic">
+                {{ 'label.teams'|trans }}
+            </a>
+        </div>
+        <table class="latest-standing">
+            <tbody>
+            {% for i,team in standing.teams %}
+                <tr>
+                    <td class="text-left">{{ i + 1 }}</td>
+                    <td>
+                        <a href="{{ path('team_route', {'championship': championship.id, 'season': season, 'id': team.id}) }}" class="classic">
+                            {{ team.name|capitalize }}
+                        </a>
+                    </td>
+                    <td class="number position text-right">{{ team.points }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="latest-action">
+            <a class="classic" href="{{ path('championship_standings_route', {'id': championship.id, 'season': season}) }}">
+                {{ 'label.standings'|trans }}
+            </a>
+        </div>
+    {% endif %}
+
+
+    {% if standing.players is defined and standing.players|length > 0 %}
+        <div class="latest-headline2">
+            <a href="{{ path('championship_standings_route', {'id': championship.id, 'season': season, 'tab': 1}) }}" class="classic">
+                {{ 'label.scorers'|trans }}
+            </a>
+        </div>
+        <table>
+            <tbody>
+            {% for i,player in standing.players %}
+                <tr>
+                    <td class="text-left">{{ i + 1 }}</td>
+                    <td>
+                        <a href="{{ path('player_route', {'championship': championship.id, 'season': season, 'id': player.id}) }}" class="classic uc-words">
+                            {{ player.name }}
+                        </a>
+                    </td>
+                    <td class="number position text-right">{{ player.goal }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="latest-action">
+            <a class="classic" href="{{ path('championship_standings_route', {'id': championship.id, 'season': season, 'tab': 1}) }}">
+                {{ 'label.standings'|trans }}
+            </a>
+        </div>
+    {% endif %}
+{% endif %}

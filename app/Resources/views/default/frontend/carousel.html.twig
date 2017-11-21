@@ -1,0 +1,37 @@
+{% if pictures is defined and pictures|length > 0 and cover is defined and cover %}
+    <section id="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                {% for position,picture in pictures %}
+                    {% if picture.id == cover.id %}
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ position }}" class="active"></li>
+                    {% else %}
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ position }}"></li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" alt="{{ cover.alt }}" title="{{ cover.title }}" src="{{ asset(cover.pathname) | imagine_filter('original') }}" />
+                    {% if picture.title %}
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>{{ cover.title|capitalize }}</h3>
+                        </div>
+                    {% endif %}
+                </div>
+                {% for picture in pictures %}
+                    {% if picture.id != cover.id %}
+                        <div class="carousel-item">
+                            <img class="d-block w-100" alt="{{ picture.alt }}" title="{{ picture.title }}" src="{{ asset(picture.pathname) | imagine_filter('original') }}" />
+                            {% if picture.title %}
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h3>{{ picture.title|capitalize }}</h3>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}

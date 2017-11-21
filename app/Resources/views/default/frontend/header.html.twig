@@ -1,0 +1,30 @@
+<nav class="navbar navbar-green navbar-inverse navbar-dark">
+    <div class="logo-burger">
+        <button id="btn-burger" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{{ path('home_route') }}">{{ 'label.logo'|trans }}</a>
+    </div>
+
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="d-flex flex-column">
+            <a class="width-100 text-right" id="menu-close">X</a>
+        </div>
+        <div class="d-flex flex-column">
+            <span class="width-100 menu-title">{{ 'label.championships'|trans }}</span>
+        </div>
+        {% if main_menu.championships is defined and main_menu.championships > 0 and main_menu.season is defined %}
+            <ul class="navbar-nav">
+                {% for mmc in main_menu.championships %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('championship_news_route', {'id': mmc.id, 'season':main_menu.season }) }}">
+                            {{ mmc|capitalize }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</nav>

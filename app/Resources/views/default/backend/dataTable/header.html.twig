@@ -1,0 +1,26 @@
+{% if table.fields is defined and table.fields|length > 0 %}
+    <thead>
+        <tr>
+            {% if table.checkAll is defined and table.checkAll %}
+                <th style="width: 1%"><input type="checkbox" name="dt_check_all"></th>
+            {% endif %}
+            {% for field,row in table.fields %}
+                <th class="type_{{ row.type }} {{ field }}{% if row.params.class is defined %} {{ row.params.class }}{% endif %}{% if row.sortable is defined and row.sortable %} sortable{% if table.orderedColumn is defined and table.orderedColumn == field %} order {{ table.orderedDirection }}{% else %} asc{% endif %}{% endif %}"
+                    {% if row.sortable is defined and row.sortable %}
+                        data-order="{{ field }}"
+                        {% if table.orderedColumn is defined and table.orderedColumn == field %}
+                            data-dir="{{ table.orderedDirection }}"
+                        {% else %}
+                            data-dir="asc"
+                        {% endif %}
+                    {% endif %}>
+                    {{ row.label }}
+                    {% if row.sortable is defined and row.sortable %}
+                        <span aria-hidden="true" class="fa fa-sort{% if table.orderedColumn is defined and table.orderedColumn == field %}-{{ table.orderedDirection }}{% endif %}">
+                        </span>
+                    {% endif %}
+                </th>
+            {% endfor %}
+        </tr>
+    </thead>
+{% endif %}

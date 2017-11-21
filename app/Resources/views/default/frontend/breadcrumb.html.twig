@@ -1,0 +1,19 @@
+{% if breadcrumb is defined %}
+    <div class="row">
+        <div class="col-xs-12">
+            <ol class="breadcrumb">
+                {% for entry in breadcrumb %}
+                    <li>
+                        {% if entry.route is defined %}
+                            <a href="{{ url(entry.route) }}">{{ entry.label }}</a>
+                        {% elseif entry.href is defined %}
+                            <a href="{{ entry.href }}">{{ entry.label }}</a>
+                        {% else %}
+                            {{ entry.label }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <title>{% if meta.title is defined %}{{ meta.title }}{% endif %}</title>
+        {% if meta.desc is defined and meta.desc %}
+            <meta name="description" content="{{ meta.desc }}">
+        {% endif %}
+        {% if meta.keys is defined and meta.keys %}
+            <meta name="keywords" content="{{ meta.keys }}">
+        {% endif %}
+        <meta name="author" content="Etienne Bertrand Zang Ondoua">
+
+        {% block stylesheets %}
+            <link href="{{ asset('bundles/app/font/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/app/' ~ theme ~ '/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/app/' ~ theme ~ '/lightgallery/css/lightgallery.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/app/' ~ theme ~ '/css/mdb.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/app/' ~ theme ~ '/css/style.css') }}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
+    </head>
+    <body>
+        <header>
+            {{ include(template_dir ~ 'header.html.twig')}}
+            {% block menu %}{% endblock %}
+            {% block image %}{% endblock %}
+            {% block carousel %}{% endblock %}
+        </header>
+
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+
+        <footer class="page-footer center-on-small-only">
+            {{ include(template_dir ~ 'footer.html.twig')}}
+        </footer>
+
+        {% block javascripts %}
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/jquery-3.2.1.min.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/popper.min.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/lightgallery/js/lightgallery-all.min.js') }}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/mdb.min.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/html.replace.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/sortable.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/sortable2.js') }}"></script>
+            <script src="{{ asset('bundles/app/' ~ theme ~ '/js/front.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

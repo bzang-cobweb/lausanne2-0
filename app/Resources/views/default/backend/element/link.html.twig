@@ -1,0 +1,26 @@
+{% if route is defined %}
+    {% if route == ''  %}
+        <a {% if class is defined and class != ''  %}class="{{ class }}"{% endif %} href="#">
+            {% if label is defined %}{{ label|trans }}{% endif %}
+        </a>
+    {% else %}
+        {% if params is defined %}
+            <a {% if class is defined and class != ''  %}class="{{ class }}"{% endif %} href="href="{{ path(route, params) }}">
+                {% if label is defined %}{{ label|trans }}{% endif %}
+            </a>
+        {% else %}
+            <a {% if class is defined and class != ''  %}class="{{ class }}"{% endif %} href="href="{{ path(route) }}">
+                {% if label is defined %}{{ label|trans }}{% endif %}
+            </a>
+        {% endif %}
+    {% endif %}
+{% elseif url is defined %}
+    <a {% if class is defined and class != ''  %}class="{{ class }}"{% endif %} href="{{ url }}">
+        {% if label is defined %}{{ label|trans }}{% endif %}
+    </a>
+{% else url is defined %}
+    <a {% if class is defined and class != ''  %}class="{{ class }}"{% endif %} href="#">
+        {% if label is defined %}{{ label|trans }}{% endif %}
+    </a>
+{% endif %}
+

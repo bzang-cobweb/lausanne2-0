@@ -1,0 +1,17 @@
+{% extends  '12.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            {% if success is defined and success %}
+                <div class="alert alert-success" role="alert">
+                    {{ success }}
+                </div>
+            {% elseif error is defined and error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
