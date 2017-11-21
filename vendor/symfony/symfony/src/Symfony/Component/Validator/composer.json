@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
+        "php": "^5.5.9|>=7.0.8",
         "symfony/polyfill-mbstring": "~1.0",
         "symfony/translation": "~2.8|~3.0"
     },
@@ -46,7 +46,6 @@
         "symfony/yaml": "",
         "symfony/config": "",
         "egulias/email-validator": "Strict (RFC compliant) email validation",
-        "symfony/property-access": "For using the Expression validator",
         "symfony/expression-language": "For using the Expression validator"
     },
     "autoload": {

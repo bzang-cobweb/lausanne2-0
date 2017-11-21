@@ -15,6 +15,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Finder\Finder;
 
@@ -56,6 +57,10 @@ EOF
     {
         $io = new SymfonyStyle($input, $output);
 
+        if (Kernel::VERSION_ID >= 30400) {
+            throw new \LogicException('The "cache:clear" command in Symfony 3.3 is incompatible with HttpKernel 3.4, please upgrade "symfony/framework-bundle" or downgrade "symfony/http-kernel".');
+        }
+
         $realCacheDir = $this->getContainer()->getParameter('kernel.cache_dir');
         // the old cache dir name must not be longer than the real one to avoid exceeding
         // the maximum length of a directory or file path within it (esp. Windows MAX_PATH)
@@ -77,8 +82,6 @@ EOF
         if ($input->getOption('no-warmup')) {
             $filesystem->rename($realCacheDir, $oldCacheDir);
         } else {
-            @trigger_error('Calling cache:clear without the --no-warmup option is deprecated since version 3.3. Cache warmup should be done with the cache:warmup command instead.', E_USER_DEPRECATED);
-
             $this->warmupCache($input, $output, $realCacheDir, $oldCacheDir);
         }
 
@@ -128,8 +131,6 @@ EOF
      * @param string $warmupDir
      * @param string $realCacheDir
      * @param bool   $enableOptionalWarmers
-     *
-     * @internal to be removed in 4.0
      */
     protected function warmup($warmupDir, $realCacheDir, $enableOptionalWarmers = true)
     {
@@ -158,7 +159,7 @@ EOF
         $safeTempKernel = str_replace('\\', '\\\\', get_class($tempKernel));
         $realKernelFQN = get_class($realKernel);
 
-        foreach (Finder::create()->files()->name('*.meta')->in($warmupDir) as $file) {
+        foreach (Finder::create()->files()->depth('<3')->name('*.meta')->in($warmupDir) as $file) {
             file_put_contents($file, preg_replace(
                 '/(C\:\d+\:)"'.$safeTempKernel.'"/',
                 sprintf('$1"%s"', $realKernelFQN),
@@ -170,14 +171,16 @@ EOF
         $search = array($warmupDir, str_replace('\\', '\\\\', $warmupDir));
         $replace = str_replace('\\', '/', $realCacheDir);
         foreach (Finder::create()->files()->in($warmupDir) as $file) {
-            $content = str_replace($search, $replace, file_get_contents($file));
-            file_put_contents($file, $content);
+            $content = str_replace($search, $replace, file_get_contents($file), $count);
+            if ($count) {
+                file_put_contents($file, $content);
+            }
         }
 
         // fix references to container's class
         $tempContainerClass = get_class($tempKernel->getContainer());
         $realContainerClass = get_class($realKernel->getContainer());
-        foreach (Finder::create()->files()->name($tempContainerClass.'*')->in($warmupDir) as $file) {
+        foreach (Finder::create()->files()->depth('<2')->name($tempContainerClass.'*')->in($warmupDir) as $file) {
             $content = str_replace($tempContainerClass, $realContainerClass, file_get_contents($file));
             file_put_contents($file, $content);
             rename($file, str_replace(DIRECTORY_SEPARATOR.$tempContainerClass, DIRECTORY_SEPARATOR.$realContainerClass, $file));
@@ -194,8 +197,6 @@ EOF
      * @param string          $warmupDir
      *
      * @return KernelInterface
-     *
-     * @internal to be removed in 4.0
      */
     protected function getTempKernel(KernelInterface $parent, $namespace, $parentClass, $warmupDir)
     {

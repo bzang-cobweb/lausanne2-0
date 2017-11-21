@@ -2,7 +2,7 @@
     "name": "symfony/workflow",
     "type": "library",
     "description": "Symfony Workflow Component",
-    "keywords": ["workflow", "petrinet", "place", "transition"],
+    "keywords": ["workflow", "petrinet", "place", "transition", "statemachine", "state"],
     "homepage": "http://symfony.com",
     "license": "MIT",
     "authors": [
@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
+        "php": "^5.5.9|>=7.0.8",
         "symfony/property-access": "~2.3|~3.0"
     },
     "require-dev": {

@@ -116,8 +116,8 @@ DependencyInjection
 
  * Using unsupported options to configure service aliases raises an exception.
 
- * Setting or unsetting a private service with the `Container::set()` method is
-   no longer supported. Only public services can be set or unset.
+ * Setting or unsetting a service with the `Container::set()` method is
+   no longer supported. Only synthetic services can be set or unset.
 
  * Checking the existence of a private service with the `Container::has()`
    method is no longer supported and will return `false`.
@@ -223,9 +223,6 @@ Form
 FrameworkBundle
 ---------------
 
- * The `cache:clear` command does not warmup the cache anymore. Warmup should
-   be done via the `cache:warmup` command.
-
  * The "framework.trusted_proxies" configuration option and the corresponding "kernel.trusted_proxies" parameter have been removed. Use the `Request::setTrustedProxies()` method in your front controller instead.
 
  * The default value of the `framework.workflows.[name].type` configuration options is now `state_machine`.
@@ -326,8 +323,8 @@ FrameworkBundle
  * The `Symfony\Bundle\FrameworkBundle\DependencyInjection\Compiler\ValidateWorkflowsPass` class
    has been removed. Use the `Symfony\Component\Workflow\DependencyInjection\ValidateWorkflowsPass`
    class instead.
-   
- * The `Symfony\Bundle\FrameworkBundle\Validator\ConstraintValidatorFactory` class has been removed. 
+
+ * The `Symfony\Bundle\FrameworkBundle\Validator\ConstraintValidatorFactory` class has been removed.
    Use `Symfony\Component\Validator\ContainerConstraintValidatorFactory` instead.
 
 HttpFoundation
@@ -402,7 +399,7 @@ HttpKernel
 Ldap
 ----
 
- * The `RenameEntryInterface` has been deprecated, and merged with `EntryManagerInterface`
+ * The `RenameEntryInterface` has been removed, and merged with `EntryManagerInterface`
 
 Process
 -------
@@ -443,7 +440,7 @@ SecurityBundle
 
  * The `UserPasswordEncoderCommand` class does not allow `null` as the first argument anymore.
 
- * `UserPasswordEncoderCommand` does not implement `ContainerAwareInterface` anymore.
+ * `UserPasswordEncoderCommand` does not extend `ContainerAwareCommand` nor implement `ContainerAwareInterface` anymore.
 
 Serializer
 ----------
@@ -555,8 +552,8 @@ Yaml
    throws a `ParseException`.
 
  * Removed support for implicitly parsing non-string mapping keys as strings.
-   Mapping keys that are no strings will result in a `ParseException`. Use the
-   `PARSE_KEYS_AS_STRINGS` flag to opt-in for keys to be parsed as strings.
+   Mapping keys that are no strings will result in a `ParseException`. Use
+   quotes to opt-in for keys to be parsed as strings.
 
    Before:
 
@@ -564,7 +561,6 @@ Yaml
    $yaml = <<<YAML
    null: null key
    true: boolean true
-   1: integer key
    2.0: float key
    YAML;
 
@@ -576,13 +572,12 @@ Yaml
    ```php
 
    $yaml = <<<YAML
-   null: null key
-   true: boolean true
-   1: integer key
-   2.0: float key
+   "null": null key
+   "true": boolean true
+   "2.0": float key
    YAML;
 
-   Yaml::parse($yaml, Yaml::PARSE_KEYS_AS_STRINGS);
+   Yaml::parse($yaml);
    ```
 
  * Omitting the key of a mapping is not supported anymore and throws a `ParseException`.

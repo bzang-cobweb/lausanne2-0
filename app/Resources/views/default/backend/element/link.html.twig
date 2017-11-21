@@ -18,7 +18,7 @@
     <a {% if class is defined and class != ''  %}class="{{ class }}"{% endif %} href="{{ url }}">
         {% if label is defined %}{{ label|trans }}{% endif %}
     </a>
-{% else url is defined %}
+{% else %}
     <a {% if class is defined and class != ''  %}class="{{ class }}"{% endif %} href="#">
         {% if label is defined %}{{ label|trans }}{% endif %}
     </a>

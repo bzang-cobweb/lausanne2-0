@@ -18,6 +18,7 @@ use Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
 use Symfony\Component\DependencyInjection\Compiler\Compiler;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
+use Symfony\Component\DependencyInjection\Compiler\ResolveEnvPlaceholdersPass;
 use Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Exception\LogicException;
@@ -141,7 +142,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * If you are not using the loaders and therefore don't want
      * to depend on the Config component, set this flag to false.
      *
-     * @param bool $track true if you want to track resources, false otherwise
+     * @param bool $track True if you want to track resources, false otherwise
      */
     public function setResourceTracking($track)
     {
@@ -151,7 +152,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
     /**
      * Checks if resources are tracked.
      *
-     * @return bool true if resources are tracked, false otherwise
+     * @return bool true If resources are tracked, false otherwise
      */
     public function isTrackingResources()
     {
@@ -160,19 +161,12 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
 
     /**
      * Sets the instantiator to be used when fetching proxies.
-     *
-     * @param InstantiatorInterface $proxyInstantiator
      */
     public function setProxyInstantiator(InstantiatorInterface $proxyInstantiator)
     {
         $this->proxyInstantiator = $proxyInstantiator;
     }
 
-    /**
-     * Registers an extension.
-     *
-     * @param ExtensionInterface $extension An extension instance
-     */
     public function registerExtension(ExtensionInterface $extension)
     {
         $this->extensions[$extension->getAlias()] = $extension;
@@ -237,10 +231,6 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
     }
 
     /**
-     * Adds a resource for this configuration.
-     *
-     * @param ResourceInterface $resource A resource instance
-     *
      * @return $this
      */
     public function addResource(ResourceInterface $resource)
@@ -320,8 +310,6 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
     /**
      * Adds the given class hierarchy as resources.
      *
-     * @param \ReflectionClass $class
-     *
      * @return $this
      *
      * @deprecated since version 3.3, to be removed in 4.0. Use addObjectResource() or getReflectionClass() instead.
@@ -337,12 +325,15 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * Retrieves the requested reflection class and registers it for resource tracking.
      *
      * @param string $class
+     * @param bool   $throw
      *
      * @return \ReflectionClass|null
      *
+     * @throws \ReflectionException when a parent class/interface/trait is not found and $throw is true
+     *
      * @final
      */
-    public function getReflectionClass($class)
+    public function getReflectionClass($class, $throw = true)
     {
         if (!$class = $this->getParameterBag()->resolveValue($class)) {
             return;
@@ -357,6 +348,9 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
                 $classReflector = $resource->isFresh(0) ? false : new \ReflectionClass($class);
             }
         } catch (\ReflectionException $e) {
+            if ($throw) {
+                throw $e;
+            }
             $classReflector = false;
         }
 
@@ -401,9 +395,13 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
             return $exists;
         }
 
-        if ($trackContents && is_dir($path)) {
-            $this->addResource(new DirectoryResource($path, is_string($trackContents) ? $trackContents : null));
-        } elseif ($trackContents || is_dir($path)) {
+        if (is_dir($path)) {
+            if ($trackContents) {
+                $this->addResource(new DirectoryResource($path, is_string($trackContents) ? $trackContents : null));
+            } else {
+                $this->addResource(new GlobResource($path, '/*', false));
+            }
+        } elseif ($trackContents) {
             $this->addResource(new FileResource($path));
         }
 
@@ -601,8 +599,6 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * parameter, the value will still be 'bar' as defined in the ContainerBuilder
      * constructor.
      *
-     * @param ContainerBuilder $container The ContainerBuilder instance to merge
-     *
      * @throws BadMethodCallException When this ContainerBuilder is compiled
      */
     public function merge(ContainerBuilder $container)
@@ -630,10 +626,16 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
         }
 
         if ($this->getParameterBag() instanceof EnvPlaceholderParameterBag && $container->getParameterBag() instanceof EnvPlaceholderParameterBag) {
+            $envPlaceholders = $container->getParameterBag()->getEnvPlaceholders();
             $this->getParameterBag()->mergeEnvPlaceholders($container->getParameterBag());
+        } else {
+            $envPlaceholders = array();
         }
 
         foreach ($container->envCounters as $env => $count) {
+            if (!$count && !isset($envPlaceholders[$env])) {
+                continue;
+            }
             if (!isset($this->envCounters[$env])) {
                 $this->envCounters[$env] = $count;
             } else {
@@ -723,9 +725,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
         $bag = $this->getParameterBag();
 
         if ($resolveEnvPlaceholders && $bag instanceof EnvPlaceholderParameterBag) {
-            $this->parameterBag = new ParameterBag($this->resolveEnvPlaceholders($bag->all(), true));
-            $this->envPlaceholders = $bag->getEnvPlaceholders();
-            $this->parameterBag = $bag = new ParameterBag($this->resolveEnvPlaceholders($this->parameterBag->all()));
+            $compiler->addPass(new ResolveEnvPlaceholdersPass(), PassConfig::TYPE_AFTER_REMOVING, -1000);
         }
 
         $compiler->compile($this);
@@ -738,9 +738,15 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
 
         $this->extensionConfigs = array();
 
-        parent::compile();
+        if ($bag instanceof EnvPlaceholderParameterBag) {
+            if ($resolveEnvPlaceholders) {
+                $this->parameterBag = new ParameterBag($this->resolveEnvPlaceholders($bag->all(), true));
+            }
 
-        $this->envPlaceholders = $bag instanceof EnvPlaceholderParameterBag ? $bag->getEnvPlaceholders() : array();
+            $this->envPlaceholders = $bag->getEnvPlaceholders();
+        }
+
+        parent::compile();
     }
 
     /**
@@ -755,8 +761,6 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
 
     /**
      * Adds the service aliases.
-     *
-     * @param array $aliases An array of aliases
      */
     public function addAliases(array $aliases)
     {
@@ -767,8 +771,6 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
 
     /**
      * Sets the service aliases.
-     *
-     * @param array $aliases An array of aliases
      */
     public function setAliases(array $aliases)
     {
@@ -862,8 +864,8 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * This methods allows for simple registration of service definition
      * with a fluid interface.
      *
-     * @param string $id    The service identifier
-     * @param string $class The service class
+     * @param string $id         The service identifier
+     * @param string $class|null The service class
      *
      * @return Definition A Definition instance
      */
@@ -1310,7 +1312,14 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
                     } else {
                         $resolved = sprintf($format, $env);
                     }
-                    $value = str_ireplace($placeholder, $resolved, $value);
+                    if ($placeholder === $value) {
+                        $value = $resolved;
+                    } else {
+                        if (!is_string($resolved) && !is_numeric($resolved)) {
+                            throw new RuntimeException(sprintf('A string value must be composed of strings and/or numbers, but found parameter "env(%s)" of type %s inside string value "%s".', $env, gettype($resolved), $value));
+                        }
+                        $value = str_ireplace($placeholder, $resolved, $value);
+                    }
                     $usedEnvs[$env] = $env;
                     $this->envCounters[$env] = isset($this->envCounters[$env]) ? 1 + $this->envCounters[$env] : 1;
                 }
@@ -1378,11 +1387,33 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
             foreach ($value as $v) {
                 $services = array_unique(array_merge($services, self::getServiceConditionals($v)));
             }
-        } elseif ($value instanceof Reference && $value->getInvalidBehavior() === ContainerInterface::IGNORE_ON_INVALID_REFERENCE) {
+        } elseif ($value instanceof Reference && ContainerInterface::IGNORE_ON_INVALID_REFERENCE === $value->getInvalidBehavior()) {
             $services[] = (string) $value;
         }
 
         return $services;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getEnv($name)
+    {
+        $value = parent::getEnv($name);
+
+        if (!is_string($value) || !$this->getParameterBag() instanceof EnvPlaceholderParameterBag) {
+            return $value;
+        }
+
+        foreach ($this->getParameterBag()->getEnvPlaceholders() as $env => $placeholders) {
+            if (isset($placeholders[$value])) {
+                $bag = new ParameterBag($this->getParameterBag()->all());
+
+                return $bag->unescapeValue($bag->get("env($name)"));
+            }
+        }
+
+        return $value;
     }
 
     /**

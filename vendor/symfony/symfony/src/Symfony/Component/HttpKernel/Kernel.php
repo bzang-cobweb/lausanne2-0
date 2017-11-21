@@ -61,19 +61,17 @@ abstract class Kernel implements KernelInterface, TerminableInterface
 
     private $projectDir;
 
-    const VERSION = '3.3.2';
-    const VERSION_ID = 30302;
+    const VERSION = '3.3.13';
+    const VERSION_ID = 30313;
     const MAJOR_VERSION = 3;
     const MINOR_VERSION = 3;
-    const RELEASE_VERSION = 2;
+    const RELEASE_VERSION = 13;
     const EXTRA_VERSION = '';
 
     const END_OF_MAINTENANCE = '01/2018';
     const END_OF_LIFE = '07/2018';
 
     /**
-     * Constructor.
-     *
      * @param string $environment The environment
      * @param bool   $debug       Whether to enable debugging or not
      */
@@ -350,7 +348,7 @@ abstract class Kernel implements KernelInterface, TerminableInterface
      * @param string $name      The cache name prefix
      * @param string $extension File extension of the resulting file
      *
-     * @deprecated since version 3.3, to be removed in 4.0.
+     * @deprecated since version 3.3, to be removed in 4.0. The class cache is not needed anymore when using PHP 7.0.
      */
     public function loadClassCache($name = 'classes', $extension = '.php')
     {
@@ -497,8 +495,6 @@ abstract class Kernel implements KernelInterface, TerminableInterface
      * The extension point similar to the Bundle::build() method.
      *
      * Use this method to register compiler passes and manipulate the container during the building process.
-     *
-     * @param ContainerBuilder $container
      */
     protected function build(ContainerBuilder $container)
     {
@@ -545,11 +541,28 @@ abstract class Kernel implements KernelInterface, TerminableInterface
                         return $previousHandler ? $previousHandler($type, $message, $file, $line) : false;
                     }
 
-                    $collectedLogs[] = array(
+                    if (isset($collectedLogs[$message])) {
+                        ++$collectedLogs[$message]['count'];
+
+                        return;
+                    }
+
+                    $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3);
+                    // Clean the trace by removing first frames added by the error handler itself.
+                    for ($i = 0; isset($backtrace[$i]); ++$i) {
+                        if (isset($backtrace[$i]['file'], $backtrace[$i]['line']) && $backtrace[$i]['line'] === $line && $backtrace[$i]['file'] === $file) {
+                            $backtrace = array_slice($backtrace, 1 + $i);
+                            break;
+                        }
+                    }
+
+                    $collectedLogs[$message] = array(
                         'type' => $type,
                         'message' => $message,
                         'file' => $file,
                         'line' => $line,
+                        'trace' => $backtrace,
+                        'count' => 1,
                     );
                 });
             }
@@ -562,7 +575,7 @@ abstract class Kernel implements KernelInterface, TerminableInterface
                 if ($this->debug) {
                     restore_error_handler();
 
-                    file_put_contents($this->getCacheDir().'/'.$class.'Deprecations.log', serialize($collectedLogs));
+                    file_put_contents($this->getCacheDir().'/'.$class.'Deprecations.log', serialize(array_values($collectedLogs)));
                     file_put_contents($this->getCacheDir().'/'.$class.'Compiler.log', null !== $container ? implode("\n", $container->getCompiler()->getLog()) : '');
                 }
             }
@@ -679,8 +692,6 @@ abstract class Kernel implements KernelInterface, TerminableInterface
 
     /**
      * Prepares the ContainerBuilder before it is compiled.
-     *
-     * @param ContainerBuilder $container A ContainerBuilder instance
      */
     protected function prepareContainer(ContainerBuilder $container)
     {
@@ -748,8 +759,6 @@ abstract class Kernel implements KernelInterface, TerminableInterface
     /**
      * Returns a loader for the container.
      *
-     * @param ContainerInterface $container The service container
-     *
      * @return DelegatingLoader The loader
      */
     protected function getContainerLoader(ContainerInterface $container)
@@ -797,7 +806,7 @@ abstract class Kernel implements KernelInterface, TerminableInterface
                 do {
                     $token = $tokens[++$i];
                     $output .= isset($token[1]) && 'b"' !== $token ? $token[1] : $token;
-                } while ($token[0] !== T_END_HEREDOC);
+                } while (T_END_HEREDOC !== $token[0]);
                 $rawChunk = '';
             } elseif (T_WHITESPACE === $token[0]) {
                 if ($ignoreSpace) {

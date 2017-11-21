@@ -130,6 +130,29 @@ class ResolveInstanceofConditionalsPassTest extends TestCase
         $this->assertSame(array('local_instanceof_tag' => array(array()), 'autoconfigured_tag' => array(array())), $def->getTags());
     }
 
+    public function testAutoconfigureInstanceofDoesNotDuplicateTags()
+    {
+        $container = new ContainerBuilder();
+        $def = $container->register('normal_service', self::class);
+        $def
+            ->addTag('duplicated_tag')
+            ->addTag('duplicated_tag', array('and_attributes' => 1))
+        ;
+        $def->setInstanceofConditionals(array(
+            parent::class => (new ChildDefinition(''))->addTag('duplicated_tag'),
+        ));
+        $def->setAutoconfigured(true);
+        $container->registerForAutoconfiguration(parent::class)
+            ->addTag('duplicated_tag', array('and_attributes' => 1))
+        ;
+
+        (new ResolveInstanceofConditionalsPass())->process($container);
+        (new ResolveDefinitionTemplatesPass())->process($container);
+
+        $def = $container->getDefinition('normal_service');
+        $this->assertSame(array('duplicated_tag' => array(array(), array('and_attributes' => 1))), $def->getTags());
+    }
+
     public function testProcessDoesNotUseAutoconfiguredInstanceofIfNotEnabled()
     {
         $container = new ContainerBuilder();
@@ -200,5 +223,31 @@ class ResolveInstanceofConditionalsPassTest extends TestCase
             ->addArgument('bar');
 
         (new ResolveInstanceofConditionalsPass())->process($container);
+    }
+
+    public function testMergeReset()
+    {
+        $container = new ContainerBuilder();
+
+        $container
+            ->register('bar', self::class)
+            ->addArgument('a')
+            ->addMethodCall('setB')
+            ->setDecoratedService('foo')
+            ->addTag('t')
+            ->setInstanceofConditionals(array(
+                parent::class => (new ChildDefinition(''))->addTag('bar'),
+            ))
+        ;
+
+        (new ResolveInstanceofConditionalsPass())->process($container);
+
+        $abstract = $container->getDefinition('abstract.instanceof.bar');
+
+        $this->assertEmpty($abstract->getArguments());
+        $this->assertEmpty($abstract->getMethodCalls());
+        $this->assertNull($abstract->getDecoratedService());
+        $this->assertEmpty($abstract->getTags());
+        $this->assertTrue($abstract->isAbstract());
     }
 }

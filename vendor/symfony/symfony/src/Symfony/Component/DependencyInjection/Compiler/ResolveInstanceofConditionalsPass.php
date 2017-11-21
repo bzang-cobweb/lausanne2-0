@@ -66,7 +66,7 @@ class ResolveInstanceofConditionalsPass implements CompilerPassInterface
         $instanceofTags = array();
 
         foreach ($conditionals as $interface => $instanceofDefs) {
-            if ($interface !== $class && (!$container->getReflectionClass($class))) {
+            if ($interface !== $class && (!$container->getReflectionClass($class, false))) {
                 continue;
             }
 
@@ -107,6 +107,9 @@ class ResolveInstanceofConditionalsPass implements CompilerPassInterface
             while (0 <= --$i) {
                 foreach ($instanceofTags[$i] as $k => $v) {
                     foreach ($v as $v) {
+                        if ($definition->hasTag($k) && in_array($v, $definition->getTag($k))) {
+                            continue;
+                        }
                         $definition->addTag($k, $v);
                     }
                 }
@@ -116,6 +119,7 @@ class ResolveInstanceofConditionalsPass implements CompilerPassInterface
             $abstract
                 ->setArguments(array())
                 ->setMethodCalls(array())
+                ->setDecoratedService(null)
                 ->setTags(array())
                 ->setAbstract(true);
         }

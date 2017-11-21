@@ -313,7 +313,7 @@ class ProcessTest extends TestCase
 
         $called = false;
         $p->run(function ($type, $buffer) use (&$called) {
-            $called = $buffer === 'foo';
+            $called = 'foo' === $buffer;
         });
 
         $this->assertTrue($called, 'The callback should be executed with the output');
@@ -326,7 +326,7 @@ class ProcessTest extends TestCase
 
         $called = false;
         $p->run(function ($type, $buffer) use (&$called) {
-            $called = $buffer === 'foo';
+            $called = 'foo' === $buffer;
         });
 
         $this->assertTrue($called, 'The callback should be executed with the output');
@@ -429,6 +429,9 @@ class ProcessTest extends TestCase
         $this->assertGreaterThan(0, $process->getExitCode());
     }
 
+    /**
+     * @group tty
+     */
     public function testTTYCommand()
     {
         if ('\\' === DIRECTORY_SEPARATOR) {
@@ -444,6 +447,9 @@ class ProcessTest extends TestCase
         $this->assertSame(Process::STATUS_TERMINATED, $process->getStatus());
     }
 
+    /**
+     * @group tty
+     */
     public function testTTYCommandExitCode()
     {
         if ('\\' === DIRECTORY_SEPARATOR) {
@@ -1219,7 +1225,7 @@ class ProcessTest extends TestCase
     {
         $input = new InputStream();
 
-        $process = $this->getProcessForCode('echo \'ping\'; stream_copy_to_stream(STDIN, STDOUT);');
+        $process = $this->getProcessForCode('echo \'ping\'; echo fread(STDIN, 4); echo fread(STDIN, 4);');
         $process->setInput($input);
 
         $process->start(function ($type, $data) use ($input) {
@@ -1476,6 +1482,24 @@ class ProcessTest extends TestCase
         $p->run();
 
         $this->assertSame($arg, $p->getOutput());
+    }
+
+    public function testRawCommandLine()
+    {
+        $p = new Process(sprintf('"%s" -r %s "a" "" "b"', self::$phpBin, escapeshellarg('print_r($argv);')));
+        $p->run();
+
+        $expected = <<<EOTXT
+Array
+(
+    [0] => -
+    [1] => a
+    [2] => 
+    [3] => b
+)
+
+EOTXT;
+        $this->assertSame($expected, $p->getOutput());
     }
 
     public function provideEscapeArgument()
