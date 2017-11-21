@@ -4,11 +4,11 @@
     <div class="row">
         <div class="col-lg-12">
             {% if success is defined and success %}
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-success mt-15" role="alert">
                     {{ success }}
                 </div>
             {% elseif error is defined and error %}
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-danger mt-15 " role="alert">
                     {{ error }}
                 </div>
             {% endif %}
