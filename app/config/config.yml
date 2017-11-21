@@ -73,3 +73,9 @@ swiftmailer:
 
 web_profiler:
     intercept_redirects: false
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
