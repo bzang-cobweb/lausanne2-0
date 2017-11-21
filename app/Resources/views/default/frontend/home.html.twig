@@ -28,19 +28,19 @@
             <div class="col-xl-12">
                 <div id="content">
                     <div id="content-left" class="hide-width">
+                        <div class="headline">{{ 'label.results'|trans }}</div>
                         {% if championships is defined and championships|length > 0 %}
-                            <div class="headline">{{ 'label.results'|trans }}</div>
-                                {% for championship in championships %}
-                                    {% if championship.matches|length > 0 %}
-                                        <div class="latest">
-                                        {% include(template_dir ~ 'championship/latest_result.html.twig') with {
-                                            championship: championship,
-                                            season: season,
-                                            template_dir: template_dir
-                                        } only %}
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
+                            {% for championship in championships %}
+                                {% if championship.matches|length > 0 %}
+                                    <div class="latest">
+                                    {% include(template_dir ~ 'championship/latest_result.html.twig') with {
+                                        championship: championship,
+                                        season: season,
+                                        template_dir: template_dir
+                                    } only %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
                         {% endif %}
                     </div>
 
@@ -53,9 +53,9 @@
 
                     <div id="content-right" class="hide-width">
                         <div id="standings-block">
+                            <div class="headline">{{ 'label.standings'|trans }}</div>
                             {% if championships is defined and championships|length > 0
-                                and standings is defined and standings|length > 0%}
-                                <div class="headline">{{ 'label.standings'|trans }}</div>
+                            and standings is defined and standings|length > 0%}
                                 {% for championship in championships %}
                                     {% if standings[championship.id] is defined %}
                                         <div class="latest standing">

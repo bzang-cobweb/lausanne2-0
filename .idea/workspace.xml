@@ -71,11 +71,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../lausanne/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="540">
               <caret line="47" column="10" lean-forward="false" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../lausanne/app/Resources/views/default/frontend/home.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="54" column="50" lean-forward="false" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -196,7 +206,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Team.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Player.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/AdminTeamPictureController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/default/backend/team/pictures.html.twig" />
@@ -247,6 +256,7 @@
         <option value="$PROJECT_DIR$/../lausanne/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/../lausanne/app/Resources/views/default/frontend/install.html.twig" />
         <option value="$PROJECT_DIR$/../lausanne/.gitignore" />
+        <option value="$PROJECT_DIR$/../lausanne/app/Resources/views/default/frontend/home.html.twig" />
       </list>
     </option>
   </component>
@@ -628,12 +638,12 @@
       <workItem from="1510558346583" duration="130000" />
       <workItem from="1510680787609" duration="23697000" />
       <workItem from="1510737195438" duration="24506000" />
-      <workItem from="1510853852009" duration="116999000" />
+      <workItem from="1510853852009" duration="117238000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1038583000" />
+    <option name="totallyTimeSpent" value="1038822000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -701,14 +711,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../lausanne/app/Resources/views/default/frontend/home.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-654">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../lausanne/app/Resources/views/default/frontend/championship/latest_standing.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="474">
@@ -1107,6 +1109,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="47" column="10" lean-forward="false" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lausanne/app/Resources/views/default/frontend/home.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="54" column="50" lean-forward="false" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
           <folding />
         </state>
       </provider>
