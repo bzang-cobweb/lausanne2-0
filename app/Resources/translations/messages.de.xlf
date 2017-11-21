@@ -1,22 +1,27 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
         <body>
+            <trans-unit id="title_songo">
+                <source>title.songo</source>
+                <target>Songo Cameroon</target>
+            </trans-unit>
+
             <trans-unit id="success_install">
                 <source>success.install</source>
-                <target>Installation terminée!</target>
+                <target>Installation completed!</target>
             </trans-unit>
             <trans-unit id="success_save">
                 <source>success.saved</source>
-                <target>Enregistrement Terminée!</target>
+                <target>Completed!</target>
             </trans-unit>
             <trans-unit id="success_delete">
                 <source>success.deleted</source>
-                <target>Suppression terminée!</target>
+                <target>Delete completed!</target>
             </trans-unit>
              <trans-unit id="success_uploaded">
                  <source>success.uploaded</source>
-                 <target>Upload terminée!</target>
+                 <target>Upload completed!</target>
              </trans-unit>
 
             <trans-unit id="error_bad_token">
@@ -25,31 +30,35 @@
             </trans-unit>
             <trans-unit id="error_bad_auth">
                 <source>error.bad_auth</source>
-                <target>Echec d'authentification!</target>
+                <target>Authentication failed!</target>
             </trans-unit>
             <trans-unit id="error_duplicated">
                 <source>error.duplicated</source>
-                <target>Existe déja!</target>
+                <target>Already exists</target>
             </trans-unit>
             <trans-unit id="error_not_found">
                 <source>error.not_found</source>
-                <target>Introuvable!</target>
+                <target>Not found!</target>
+            </trans-unit>
+            <trans-unit id="error_old_password">
+                <source>error.old_password</source>
+                <target>Old password is not correct!</target>
             </trans-unit>
             <trans-unit id="error_repeat_password">
                 <source>error.repeat_password</source>
-                <target>Mot de passe n'est pas identique</target>
+                <target>Password does not match</target>
             </trans-unit>
             <trans-unit id="error_unknown">
                 <source>error.unknown</source>
-                <target>Erreur inconnue!</target>
+                <target>Unknown error!</target>
             </trans-unit>
             <trans-unit id="error_required">
                 <source>error.required</source>
-                <target>Obligatoire</target>
+                <target>Required</target>
             </trans-unit>
             <trans-unit id="error_same_team">
                 <source>error.same_team</source>
-                <target>Local et visiteur doivent être différent</target>
+                <target>Home and visitor must be different</target>
             </trans-unit>
 
 
@@ -59,32 +68,36 @@
             </trans-unit>
             <trans-unit id="user_first_name">
                 <source>user.first_name</source>
-                <target>prénom</target>
+                <target>First name</target>
             </trans-unit>
             <trans-unit id="user_last_name">
                 <source>user.last_name</source>
-                <target>Nom</target>
+                <target>Last name</target>
             </trans-unit>
             <trans-unit id="user_informations">
                 <source>user.informations</source>
                 <target>Informations</target>
             </trans-unit>
+            <trans-unit id="user_old_password">
+                <source>user.old_password</source>
+                <target>Old password</target>
+            </trans-unit>
             <trans-unit id="user_new_password">
                 <source>user.new_password</source>
-                <target>Nouveau mot de passe</target>
+                <target>New password</target>
             </trans-unit>
             <trans-unit id="user_repeat_password">
                 <source>user.repeat_password</source>
-                <target>Répéter mot de passe</target>
+                <target>Repeat password</target>
             </trans-unit>
             <trans-unit id="user_change_password">
                 <source>user.change_password</source>
-                <target>Changer mot de passe</target>
+                <target>Change password</target>
             </trans-unit>
 
             <trans-unit id="team_name">
                 <source>team.name</source>
-                <target>Nom</target>
+                <target>Name</target>
             </trans-unit>
             <trans-unit id="team_alias">
                 <source>team.alias</source>
@@ -92,15 +105,15 @@
             </trans-unit>
             <trans-unit id="team_players">
                 <source>team.players</source>
-                <target>Joueurs</target>
+                <target>Players</target>
             </trans-unit>
             <trans-unit id="team_add">
                 <source>team.add</source>
-                <target>Ajouter équipe</target>
+                <target>Add team</target>
             </trans-unit>
             <trans-unit id="team_new">
                 <source>team.new</source>
-                <target>Nouvelle équipe</target>
+                <target>New team</target>
             </trans-unit>
             <trans-unit id="team_description">
                 <source>team.description</source>
@@ -112,11 +125,11 @@
             </trans-unit>
             <trans-unit id="team_championships">
                 <source>team.championships</source>
-                <target>Championnats</target>
+                <target>Championships</target>
             </trans-unit>
             <trans-unit id="team_no_teams">
                 <source>team.no_teams</source>
-                <target>Il n'y a actuellement aucun joueur dans l'équipe.</target>
+                <target>This team does not have any player at the moment.</target>
             </trans-unit>
             <trans-unit id="team_matches">
                 <source>team.matches</source>
@@ -124,28 +137,28 @@
             </trans-unit>
             <trans-unit id="team_list">
                 <source>team.list</source>
-                <target>Equipes</target>
+                <target>Team list</target>
             </trans-unit>
 
             <trans-unit id="championship_name">
                 <source>championship.name</source>
-                <target>Nom</target>
+                <target>Name</target>
             </trans-unit>
             <trans-unit id="championship_highlighted">
                 <source>championship.highlighted</source>
-                <target>Mettre en avant</target>
+                <target>Highlight</target>
             </trans-unit>
             <trans-unit id="championship_teams">
                 <source>championship.teams</source>
-                <target>Equipes</target>
+                <target>Teams</target>
             </trans-unit>
             <trans-unit id="championship_add">
                 <source>championship.add</source>
-                <target>Ajouter championnat</target>
+                <target>Add championship</target>
             </trans-unit>
             <trans-unit id="championship_new">
                 <source>championship.new</source>
-                <target>Nouveau championnat</target>
+                <target>New championship</target>
             </trans-unit>
              <trans-unit id="championship_informations">
                  <source>championship.informations</source>
@@ -157,16 +170,16 @@
             </trans-unit>
             <trans-unit id="championship_list">
                 <source>championship.list</source>
-                <target>Championnats</target>
+                <target>Championship list</target>
             </trans-unit>
             <trans-unit id="championship_cup">
                 <source>championship.cup</source>
-                <target>Coupe</target>
+                <target>Cup</target>
             </trans-unit>
 
             <trans-unit id="player_name">
                 <source>player.name</source>
-                <target>Nom</target>
+                <target>Name</target>
             </trans-unit>
             <trans-unit id="player_alias">
                 <source>player.alias</source>
@@ -174,19 +187,19 @@
             </trans-unit>
             <trans-unit id="player_first_name">
                 <source>player.first_name</source>
-                <target>Prénom</target>
+                <target>First name</target>
             </trans-unit>
             <trans-unit id="player_last_name">
                 <source>player.last_name</source>
-                <target>Nom</target>
+                <target>Last name</target>
             </trans-unit>
             <trans-unit id="player_add">
                 <source>player.add</source>
-                <target>Ajouter joueur</target>
+                <target>Add player</target>
             </trans-unit>
             <trans-unit id="player_new">
                 <source>player.new</source>
-                <target>Nouveau joueur</target>
+                <target>New player</target>
             </trans-unit>
             <trans-unit id="player_description">
                 <source>player.description</source>
@@ -194,15 +207,15 @@
             </trans-unit>
             <trans-unit id="player_personal_informations">
                 <source>player.personal_informations</source>
-                <target>Informations</target>
+                <target>Personal informations</target>
             </trans-unit>
             <trans-unit id="player_teams">
                 <source>player.teams</source>
-                <target>Equipes</target>
+                <target>Teams</target>
             </trans-unit>
             <trans-unit id="player_list">
                 <source>player.list</source>
-                <target>Joueurs</target>
+                <target>Player list</target>
             </trans-unit>
 
 
@@ -212,35 +225,35 @@
             </trans-unit>
             <trans-unit id="match_championship">
                 <source>match.championship</source>
-                <target>Championnat</target>
+                <target>Championship</target>
             </trans-unit>
             <trans-unit id="match_season">
                 <source>match.season</source>
-                <target>Saison</target>
+                <target>Season</target>
             </trans-unit>
             <trans-unit id="match_add">
                 <source>match.add</source>
-                <target>Ajouter match</target>
+                <target>Add match</target>
             </trans-unit>
             <trans-unit id="match_new">
                 <source>match.new</source>
-                <target>Nouveau match</target>
+                <target>New match</target>
             </trans-unit>
              <trans-unit id="match_result">
                  <source>match.result</source>
-                 <target>Résultat</target>
+                 <target>Result</target>
              </trans-unit>
             <trans-unit id="match_home">
                 <source>match.home</source>
-                <target>Local</target>
+                <target>Home</target>
             </trans-unit>
             <trans-unit id="match_visitor">
                 <source>match.visitor</source>
-                <target>Visiteur</target>
+                <target>Visitor</target>
             </trans-unit>
             <trans-unit id="match_place">
                 <source>match.place</source>
-                <target>Lieu</target>
+                <target>Place</target>
             </trans-unit>
              <trans-unit id="match_time">
                  <source>match.time</source>
@@ -252,73 +265,73 @@
             </trans-unit>
             <trans-unit id="match_list">
                 <source>match.list</source>
-                <target>Matches</target>
+                <target>Match list</target>
             </trans-unit>
             <trans-unit id="match_stage">
                 <source>match.stage</source>
-                <target>Phase</target>
+                <target>Stage</target>
             </trans-unit>
 
              <trans-unit id="news_add">
                  <source>news.add</source>
-                 <target>Ajouter news</target>
+                 <target>Add news</target>
              </trans-unit>
              <trans-unit id="news_new">
                  <source>news.new</source>
-                 <target>Nouvelle news</target>
+                 <target>New news</target>
              </trans-unit>
 
 
 
-            <trans-unit id="match_stage_0">
-                <source>match.stage_0</source>
-                <target>Groupe</target>
+            <trans-unit id="match_stage_9999">
+                <source>match.stage_9999</source>
+                <target>Group</target>
             </trans-unit>
             <trans-unit id="match_stage_32">
                 <source>match.stage_32</source>
-                <target>1/32 finale</target>
+                <target>1/32 final</target>
             </trans-unit>
             <trans-unit id="match_stage_16">
                 <source>match.stage_16</source>
-                <target>1/16 finale</target>
+                <target>1/16 final</target>
             </trans-unit>
              <trans-unit id="match_stage_8">
                  <source>match.stage_8</source>
-                 <target>1/8 finale</target>
+                 <target>1/8 final</target>
              </trans-unit>
             <trans-unit id="match_stage_4">
                 <source>match.stage_4</source>
-                <target>1/4 finale</target>
+                <target>1/4 final</target>
             </trans-unit>
             <trans-unit id="match_stage_2">
                 <source>match.stage_2</source>
-                <target>1/2 finale</target>
+                <target>1/2 final</target>
             </trans-unit>
             <trans-unit id="match_stage_1">
                 <source>match.stage_1</source>
-                <target>Finale</target>
+                <target>Final</target>
             </trans-unit>
 
             <trans-unit id="result_goal">
                 <source>result.goal</source>
-                <target>But</target>
+                <target>Goal</target>
             </trans-unit>
              <trans-unit id="result_yellow_card">
                  <source>result.yellow_card</source>
-                 <target>Carton jaune</target>
+                 <target>Yellow card</target>
              </trans-unit>
             <trans-unit id="result_red_card">
                 <source>result.red_card</source>
-                <target>Carton rouge</target>
+                <target>Red card</target>
             </trans-unit>
 
             <trans-unit id="label_email">
                 <source>label.email</source>
-                <target>Adresse email</target>
+                <target>Email address</target>
             </trans-unit>
             <trans-unit id="label_password">
                 <source>label.password</source>
-                <target>Mot de passe</target>
+                <target>Password</target>
             </trans-unit>
             <trans-unit id="label_logo">
                 <source>label.logo</source>
@@ -326,43 +339,43 @@
             </trans-unit>
             <trans-unit id="label_my_account">
                 <source>label.my_account</source>
-                <target>Mon compte</target>
+                <target>My account</target>
             </trans-unit>
             <trans-unit id="label_home">
                 <source>label.home</source>
-                <target>Accueil</target>
+                <target>Home</target>
             </trans-unit>
             <trans-unit id="label_players">
                 <source>label.players</source>
-                <target>Joueurs</target>
+                <target>Players</target>
             </trans-unit>
             <trans-unit id="label_player">
                 <source>label.player</source>
-                <target>Joueur</target>
+                <target>Player</target>
             </trans-unit>
              <trans-unit id="label_teams">
                  <source>label.teams</source>
-                 <target>Equipes</target>
+                 <target>Teams</target>
              </trans-unit>
              <trans-unit id="label_team">
                  <source>label.team</source>
-                 <target>Equipe</target>
+                 <target>Team</target>
              </trans-unit>
              <trans-unit id="label_name">
                  <source>label.name</source>
-                 <target>Nom</target>
+                 <target>Name</target>
              </trans-unit>
              <trans-unit id="label_no_data_found">
                  <source>label.no_data_found</source>
-                 <target>Aucun enregistrement trouvé</target>
+                 <target>No record found</target>
              </trans-unit>
              <trans-unit id="label_championships">
                  <source>label.championships</source>
-                 <target>Championnats</target>
+                 <target>Championships</target>
              </trans-unit>
              <trans-unit id="label_since">
                  <source>label.since</source>
-                 <target>Depuis</target>
+                 <target>Since</target>
              </trans-unit>
              <trans-unit id="label_matches">
                  <source>label.matches</source>
@@ -370,23 +383,23 @@
              </trans-unit>
              <trans-unit id="label_auto_goal">
                  <source>label.auto_goal</source>
-                 <target>But contre son camp</target>
+                 <target>Auto goal</target>
              </trans-unit>
              <trans-unit id="label_pictures">
                  <source>label.pictures</source>
-                 <target>Images</target>
+                 <target>Pictures</target>
              </trans-unit>
              <trans-unit id="label_picture">
                  <source>label.picture</source>
-                 <target>Image</target>
+                 <target>Picture</target>
              </trans-unit>
              <trans-unit id="label_upload_picture">
                  <source>label.upload_picture</source>
-                 <target>Upload Image</target>
+                 <target>Upload picture</target>
              </trans-unit>
              <trans-unit id="label_title">
                  <source>label.title</source>
-                 <target>Titre</target>
+                 <target>Title</target>
              </trans-unit>
              <trans-unit id="label_alt">
                  <source>label.alt</source>
@@ -398,11 +411,11 @@
              </trans-unit>
              <trans-unit id="label_file">
                  <source>label.file</source>
-                 <target>Fichier</target>
+                 <target>File</target>
              </trans-unit>
              <trans-unit id="label_gallery">
                  <source>label.gallery</source>
-                 <target>Galerie</target>
+                 <target>Gallery</target>
              </trans-unit>
              <trans-unit id="label_teaser">
                  <source>label.teaser</source>
@@ -410,59 +423,59 @@
              </trans-unit>
              <trans-unit id="label_championship">
                  <source>label.championship</source>
-                 <target>Championnat</target>
+                 <target>Championship</target>
              </trans-unit>
              <trans-unit id="label_content">
                  <source>label.content</source>
-                 <target>Contenu</target>
+                 <target>Content</target>
              </trans-unit>
              <trans-unit id="label_updated">
                  <source>label.updated</source>
-                 <target>Modifier</target>
+                 <target>Update</target>
              </trans-unit>
              <trans-unit id="label_by">
                  <source>label.by</source>
-                 <target>Par</target>
+                 <target>By</target>
              </trans-unit>
              <trans-unit id="label_news">
                  <source>label.news</source>
-                 <target>Actualités</target>
+                 <target>News</target>
              </trans-unit>
              <trans-unit id="label_cover_image">
                  <source>label.cover_image</source>
-                 <target>Couverture</target>
+                 <target>Cover</target>
              </trans-unit>
 
 
              <trans-unit id="news_list">
                  <source>news.list</source>
-                 <target>News</target>
+                 <target>News list</target>
              </trans-unit>
 
              <trans-unit id="file_max_file_size">
                  <source>file.max_file_size</source>
-                 <target>Taille maximale du fichier %s.</target>
+                 <target>Maximum file size %s.</target>
              </trans-unit>
              <trans-unit id="file_accept_extensions">
                  <source>file.accept_extensions</source>
-                 <target>Extensions acceptées [%s].</target>
+                 <target>Accepted extensions [%s].</target>
              </trans-unit>
               <trans-unit id="file_upload_picture">
                   <source>file.upload_picture</source>
-                  <target>Upload Image</target>
+                  <target>Upload Picture</target>
               </trans-unit>
               <trans-unit id="file_replace">
                   <source>file.replace</source>
-                  <target>Choisir un fichier pour remplacer le fichier actuel ou laisser vide pour conserver le fichier actuel.</target>
+                  <target>Choose file to replace the current file or keep empty to leave the current file.</target>
               </trans-unit>
 
             <trans-unit id="button_sign_in">
                 <source>button.sign_in</source>
-                <target>Connexion</target>
+                <target>Sign In</target>
             </trans-unit>
             <trans-unit id="button_sign_out">
                 <source>button.sign_out</source>
-                <target>Déconnexion</target>
+                <target>Sign Out</target>
             </trans-unit>
             <trans-unit id="button_home">
                 <source>button.home</source>
@@ -470,19 +483,27 @@
             </trans-unit>
             <trans-unit id="button_save">
                 <source>button.save</source>
-                <target>Enregistrer</target>
+                <target>Save</target>
             </trans-unit>
             <trans-unit id="button_save_and_add">
                 <source>button.save_and_add</source>
-                <target>Enregistrer et ajouter</target>
+                <target>Save And Add</target>
             </trans-unit>
             <trans-unit id="button_cancel">
                 <source>button.cancel</source>
-                <target>Fermer</target>
+                <target>Cancel</target>
             </trans-unit>
             <trans-unit id="button_edit">
                 <source>button.edit</source>
-                <target>Editer</target>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="button_back_to_list">
+                <source>button.back_to_list</source>
+                <target>Retour à la liste</target>
+            </trans-unit>
+            <trans-unit id="button_change">
+                <source>button.change</source>
+                <target>Change</target>
             </trans-unit>
             <trans-unit id="button_upload">
                 <source>button.upload</source>
@@ -490,7 +511,7 @@
             </trans-unit>
             <trans-unit id="button_save_and_upload">
                 <source>button.save_and_upload</source>
-                <target>Enregister et Ajouter</target>
+                <target>Save And Upload</target>
             </trans-unit>
 
 
@@ -498,7 +519,7 @@
 
             <trans-unit id="admin_button_add_player">
                 <source>admin.button.add_player</source>
-                <target>Ajouter joueur</target>
+                <target>Add player</target>
             </trans-unit>
             <trans-unit id="admin_button_actions">
                 <source>admin.button.actions</source>
@@ -506,79 +527,79 @@
             </trans-unit>
             <trans-unit id="admin_button_delete">
                 <source>admin.button.delete</source>
-                <target>Supprimer</target>
+                <target>Delete</target>
             </trans-unit>
             <trans-unit id="admin_button_go">
                 <source>admin.button.go</source>
-                <target>Recherche</target>
+                <target>Search</target>
             </trans-unit>
 
             <trans-unit id="admin_label_players">
                 <source>admin.label.players</source>
-                <target>Joueurs</target>
+                <target>Players</target>
             </trans-unit>
             <trans-unit id="admin_label_search">
                 <source>admin.label.search</source>
-                <target>Recherche</target>
+                <target>Search</target>
             </trans-unit>
 
             <trans-unit id="action_delete">
                 <source>action.delete</source>
-                <target>Supprimer la sélection</target>
+                <target>Delete selected</target>
             </trans-unit>
 
             <trans-unit id="label_results">
                 <source>label.results</source>
-                <target>Résultats</target>
+                <target>Results</target>
             </trans-unit>
-            <trans-unit id="label.standings">
+            <trans-unit id="label_standings">
                 <source>label.standings</source>
-                <target>Classements</target>
+                <target>Standings</target>
             </trans-unit>
             <trans-unit id="label_standing">
                 <source>label.standing</source>
-                <target>Classement</target>
+                <target>Standing</target>
             </trans-unit>
             <trans-unit id="label_calendar">
                 <source>label.calendar</source>
-                <target>Calendrier</target>
+                <target>Calendar</target>
             </trans-unit>
             <trans-unit id="label_scorers">
                 <source>label.scorers</source>
-                <target>Buteurs</target>
+                <target>Scorers</target>
             </trans-unit>
             <trans-unit id="label_updatedAt">
                 <source>label.updatedAt</source>
-                <target>Mis à jour le</target>
+                <target>Edit at</target>
             </trans-unit>
             <trans-unit id="label_red_card">
                 <source>label.red_card</source>
-                <target>Carton rouge</target>
+                <target>Red card</target>
             </trans-unit>
             <trans-unit id="label_yellow_card">
                 <source>label.yellow_card</source>
-                <target>Carton jaune</target>
+                <target>Yellow card</target>
             </trans-unit>
 
             <trans-unit id="label_g">
                 <source>label.g</source>
-                <target>BP</target>
+                <target>G</target>
             </trans-unit>
             <trans-unit id="label_ag">
                 <source>label.ag</source>
-                <target>CSC</target>
+                <target>AG</target>
             </trans-unit>
             <trans-unit id="label_p">
                 <source>label.p</source>
-                <target>J</target>
+                <target>P</target>
             </trans-unit>
             <trans-unit id="label_w">
                 <source>label.w</source>
-                <target>G</target>
+                <target>W</target>
             </trans-unit>
             <trans-unit id="label_d">
                 <source>label.d</source>
-                <target>N</target>
+                <target>D</target>
             </trans-unit>
             <trans-unit id="label_pts">
                 <source>label.pts</source>
@@ -586,15 +607,15 @@
             </trans-unit>
             <trans-unit id="label_l">
                 <source>label.l</source>
-                <target>P</target>
+                <target>L</target>
             </trans-unit>
             <trans-unit id="label_ga">
                 <source>label.ga</source>
-                <target>BC</target>
+                <target>GA</target>
             </trans-unit>
             <trans-unit id="label_goals">
                 <source>label.goals</source>
-                <target>Buts</target>
+                <target>Goals</target>
             </trans-unit>
             <trans-unit id="label_stats">
                 <source>label.stats</source>
@@ -602,44 +623,44 @@
             </trans-unit>
             <trans-unit id="label_general">
                 <source>label.general</source>
-                <target>Général</target>
+                <target>General</target>
             </trans-unit>
             <trans-unit id="label_domicile">
                 <source>label.domicile</source>
-                <target>Domicile</target>
+                <target>Home</target>
             </trans-unit>
             <trans-unit id="label_exterior">
                 <source>label.exterior</source>
-                <target>Extérieur</target>
+                <target>Away</target>
             </trans-unit>
             <trans-unit id="label_goals_for">
                 <source>label.goals_for</source>
-                <target>Buts pour</target>
+                <target>Goals for</target>
             </trans-unit>
             <trans-unit id="label_goals_against">
                 <source>label.goals_against</source>
-                <target>Buts contre</target>
+                <target>Goals against</target>
             </trans-unit>
             <trans-unit id="label_yellows_cards">
                 <source>label.yellows_cards</source>
-                <target>Cartons jaunes</target>
+                <target>Yellows cards</target>
             </trans-unit>
             <trans-unit id="label_reds_cards">
                 <source>label.reds_cards</source>
-                <target>Cartons rouges</target>
+                <target>Reds cards</target>
             </trans-unit>
 
             <trans-unit id="error_status_code">
                 <source>error.status_code</source>
-                <target>Erreur %code%</target>
+                <target>Error %code%</target>
             </trans-unit>
             <trans-unit id="error_404">
                 <source>error.404</source>
-                <target>Page introuvable.</target>
+                <target>Page not found.</target>
             </trans-unit>
             <trans-unit id="error_500">
                 <source>error.500</source>
-                <target>Erreur interne du serveur.</target>
+                <target>Internal server error.</target>
             </trans-unit>
 
             <trans-unit id="meta_title">
@@ -648,11 +669,11 @@
             </trans-unit>
             <trans-unit id="meta_desc">
                 <source>meta.desc</source>
-                <target>Lausanne 2-0 football actualités, résultats, classements, équipes et joueurs</target>
+                <target>Lausanne 2-0 football news, results, standings, teams and players</target>
             </trans-unit>
             <trans-unit id="meta_keys">
                 <source>meta.keys</source>
-                <target>Suisse, Vaud, Lausanne, Cameroun, football, deux, zéro</target>
+                <target>Switzerland, Vaud, Lausanne, Cameroon, Football, two, zero</target>
             </trans-unit>
         </body>
     </file>
