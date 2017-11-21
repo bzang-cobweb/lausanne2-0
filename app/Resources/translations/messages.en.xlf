@@ -628,6 +628,10 @@
                 <source>label.reds_cards</source>
                 <target>Cartons rouges</target>
             </trans-unit>
+            <trans-unit id="label_comments">
+                <source>label.comments</source>
+                <target>Commentaires</target>
+            </trans-unit>
 
             <trans-unit id="error_status_code">
                 <source>error.status_code</source>

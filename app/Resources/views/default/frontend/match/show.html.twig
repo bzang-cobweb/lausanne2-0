@@ -115,28 +115,57 @@
                         </div>
                     {% endif %}
 
-                    {% if match.pictures|length > 0 %}
-                        <div class="mt-15">
-                            <ul class="nav nav-tabs" id="matchTab" role="tablist">
+                    <div class="mt-15">
+                        <ul class="nav nav-tabs" id="matchTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="match-comments-tab"
+                                   data-toggle="tab" href="#match-comments" role="tab"
+                                   aria-controls="match-comments" aria-selected="true">
+                                    {{ 'label.comments'|trans }}
+                                </a>
+                            </li>
+                            {% if match.pictures|length > 0 %}
                                 <li class="nav-item">
-                                    <a class="nav-link active"
-                                       id="match-gallery-tab" data-toggle="tab" href="#match-gallery" role="tab"
-                                       aria-controls="match-gallery" aria-selected="true">
+                                    <a class="nav-link" id="match-gallery-tab"
+                                       data-toggle="tab" href="#match-gallery" role="tab"
+                                       aria-controls="match-gallery" aria-selected="false">
                                         {{ 'label.gallery'|trans }}
                                     </a>
                                 </li>
-                            </ul>
-                            <div class="tab-content" id="matchTabContent">
-                                <div class="tab-pane fade show active" id="match-gallery" role="tabpanel" aria-labelledby="match-gallery-tab">
+                            {% endif %}
+                        </ul>
+                        <div class="tab-content" id="matchTabContent">
+                            <div class="tab-pane fade show active" id="match-comments" role="tabpanel" aria-labelledby="match-comments-tab">
+                                <div class="mt-15">
+                                    <div id="disqus_thread"></div>
+                                    <script>
+                                         var disqus_config = function () {
+                                            this.page.url = "{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}";
+                                            this.page.identifier = 'match-' + {{ match.id }};
+                                         };
+                                        (function() {
+                                            var d = document, s = d.createElement('script');
+                                            s.src = 'https://lausanne2-0.disqus.com/embed.js';
+                                            s.setAttribute('data-timestamp', + new Date());
+                                            (d.head || d.body).appendChild(s);
+                                        })();
+                                    </script>
+                                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+                                </div>
+                            </div>
+                            {% if match.pictures|length > 0 %}
+                                <div class="tab-pane fade" id="match-gallery" role="tabpanel" aria-labelledby="match-gallery-tab">
                                     <div class="mt-15">
                                         {% include(template_dir ~ 'image_gallery.html.twig') with {
                                             pictures: match.pictures
                                         } only %}
                                     </div>
                                 </div>
-                            </div>
+                            {% endif %}
                         </div>
-                    {% endif %}
+                    </div>
+
                 </div>
             </div>
         </div>
