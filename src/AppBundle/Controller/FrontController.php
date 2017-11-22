@@ -55,6 +55,7 @@ abstract class FrontController extends Controller
             'page' => $this->page,
             'theme' => $this->theme,
             'template_dir' => $this->theme . '/frontend/',
+            'winner' => 'red'
         );
 
         if(!$this->ajax){

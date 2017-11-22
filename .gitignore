@@ -46,3 +46,4 @@ parameters.txt
 /.idea/*
 .idea
 lausanne_*
+.DS_Store
