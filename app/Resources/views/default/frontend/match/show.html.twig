@@ -76,7 +76,7 @@
             <div class="col-xl-12">
                 <div id="content" class="article-match">
                     {% if match.result %}
-                        <div class="mt-15 bg-gray pl-1">
+                        <div class="mt-15 bg-gray text-center">
                             {{ 'label.stats'|trans }}
                         </div>
                         <div class="d-flex mt-15">
@@ -94,7 +94,7 @@
                     {% endif %}
 
                     {% if match.matchPlayers|length > 0 %}
-                        <div class="mt-15 bg-gray pl-1">
+                        <div class="mt-15 bg-gray text-center">
                             {{ 'label.players'|trans }}
                         </div>
                         <div class="mt-15 d-flex">
@@ -115,7 +115,7 @@
                         </div>
                     {% endif %}
 
-                    <div class="mt-15">
+                    <div class="mt-30">
                         <ul class="nav nav-tabs" id="matchTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="match-comments-tab"
@@ -141,7 +141,7 @@
                                     <script>
                                          var disqus_config = function () {
                                             this.page.url = "{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}";
-                                            this.page.identifier = 'match-' + {{ match.id }};
+                                            this.page.identifier = 'match-{{ match.id }}';
                                          };
                                         (function() {
                                             var d = document, s = d.createElement('script');
@@ -165,7 +165,6 @@
                             {% endif %}
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
