@@ -492,6 +492,10 @@
                 <source>button.save_and_upload</source>
                 <target>Enregister et Ajouter</target>
             </trans-unit>
+            <trans-unit id="button_change">
+                <source>button.change</source>
+                <target>Modifier</target>
+            </trans-unit>
 
 
 
@@ -628,10 +632,6 @@
                 <source>label.reds_cards</source>
                 <target>Cartons rouges</target>
             </trans-unit>
-            <trans-unit id="label_comments">
-                <source>label.comments</source>
-                <target>Commentaires</target>
-            </trans-unit>
 
             <trans-unit id="error_status_code">
                 <source>error.status_code</source>
@@ -657,6 +657,16 @@
             <trans-unit id="meta_keys">
                 <source>meta.keys</source>
                 <target>Suisse, Vaud, Lausanne, Cameroun, football, deux, zéro</target>
+            </trans-unit>
+
+
+            <trans-unit id="label_comments">
+                <source>label.comments</source>
+                <target>Commentaires</target>
+            </trans-unit>
+            <trans-unit id="label_follow_us">
+                <source>label.follow_us</source>
+                <target>Suivez nous</target>
             </trans-unit>
         </body>
     </file>
