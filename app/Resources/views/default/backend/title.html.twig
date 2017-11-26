@@ -12,6 +12,8 @@
             <i class="fa fa-newspaper-o fa-fw hidden-xs-down" aria-hidden="true"></i>{% if title is defined %}{{ title }}{% else %}{{ 'label.news'|trans }}{% endif %}
         {% elseif page == 'profile' %}
             <i class="fa fa-cog fa-fw hidden-xs-down" aria-hidden="true"></i>{% if title is defined %}{{ title }}{% else %}{{ 'label.championships'|trans }}{% endif %}
+        {% elseif page == 'setting' %}
+            <i class="fa fa-cog fa-fw hidden-xs-down" aria-hidden="true"></i>{% if title is defined %}{{ title }}{% else %}{{ 'label.settings'|trans }}{% endif %}
         {% elseif title is defined %}
             {{ title }}
         {% endif %}

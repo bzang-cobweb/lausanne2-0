@@ -1,0 +1,28 @@
+{% extends  'default/backend/layout/12.html.twig' %}
+
+{% block body %}
+    {% if admin is defined and admin %}
+        {% if settings is defined and settings|length > 0 %}
+            <div class="content-block" id="settings">
+                <form method="post" class="model-form">
+                    {% for setting in settings %}
+                        <div class="form-group" id="field-{{ setting.name }}">
+                            <label for="{{ setting.name }}">{{ ('label.' ~ setting.name)|trans }}</label>
+                            {% if setting.name == 'website_color' %}
+                                <select name="{{ setting.name }}" class="form-control">
+                                    <option value="red"{% if setting.value == 'red' %} selected{% endif %}>{{ 'label.red'|trans }}</option>
+                                    <option value="green"{% if setting.value == 'green' %} selected{% endif %}>{{ 'label.green'|trans }}</option>
+                                </select>
+                            {% else %}
+                                <input class="form-control" type="text" name="{{ setting.name }}" value="{{ setting.value }}" required>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    <div class="form-group text-right">
+                        <button type="submit" class="btn btn-md btn-default">{{ 'button.save'|trans }}</button>
+                    </div>
+                </form>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

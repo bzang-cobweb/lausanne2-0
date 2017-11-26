@@ -676,6 +676,26 @@
                 <source>label.assists</source>
                 <target>Passes décisives</target>
             </trans-unit>
+           <trans-unit id="label_website_color">
+                <source>label.website_color</source>
+                <target>Couleur su site</target>
+            </trans-unit>
+            <trans-unit id="label_setting">
+                <source>label.setting</source>
+                <target>Paramètre</target>
+            </trans-unit>
+            <trans-unit id="label_settings">
+                <source>label.settings</source>
+                <target>Paramètres</target>
+            </trans-unit>
+            <trans-unit id="label_red">
+                <source>label.red</source>
+                <target>Rouge</target>
+            </trans-unit>
+            <trans-unit id="label_green">
+                <source>label.green</source>
+                <target>Vert</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

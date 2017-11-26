@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Setting;
 use AppBundle\Lib\DataTable;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -232,6 +233,15 @@ abstract class AdminController extends Controller
                 'label' => 'label.players',
                 'class' => $this->page == 'player' ? 'active' : '',
                 'icon' => 'male',
+            ]
+        ];
+
+        $this->menu['main'][2] = [
+            'setting' => [
+                'route' => 'admin_setting_route',
+                'label' => 'label.settings',
+                'class' => $this->page == 'setting' ? 'active' : '',
+                'icon' => 'cog',
             ]
         ];
 

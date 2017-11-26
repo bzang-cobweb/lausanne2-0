@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Championship;
 use AppBundle\Entity\Season;
+use AppBundle\Entity\Setting;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -55,8 +56,15 @@ abstract class FrontController extends Controller
             'page' => $this->page,
             'theme' => $this->theme,
             'template_dir' => $this->theme . '/frontend/',
-            'winner' => 'red'
+            'color' => 'red'
         );
+
+        $color = $this->getDoctrine()->getRepository('AppBundle:Setting')->findOneBy([
+            'name' => 'website_color'
+        ]);
+        if($color instanceof Setting){
+            $defaults['color'] = $color->getValue();
+        }
 
         if(!$this->ajax){
             $defaults['meta']['title'] = $this->title ? $this->title : $this->get('translator')->trans('meta.title');
