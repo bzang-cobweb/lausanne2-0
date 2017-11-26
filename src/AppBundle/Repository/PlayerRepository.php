@@ -42,6 +42,10 @@ class PlayerRepository extends ModelRepository
              INNER JOIN AppBundle\Entity\MatchPlayer as mp3 WITH m3 = mp3.match WHERE
              m3.season = :season AND m3.championship = c AND mp3.player = p) AS red'
             )
+            ->addSelect('(SELECT COALESCE(SUM(mp4.assist), 0) FROM AppBundle\Entity\Match as m4
+             INNER JOIN AppBundle\Entity\MatchPlayer as mp4 WITH m4 = mp4.match WHERE
+             m4.season = :season AND m4.championship = c AND mp4.player = p) AS assist'
+            )
             ->where('p.deleted = 0 AND c.deleted = 0')
             ->setParameter('id', $championshipId)
             ->setParameter('season', $season)

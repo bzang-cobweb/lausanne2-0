@@ -667,6 +667,14 @@
                 <source>label.follow_us</source>
                 <target>Suivez nous</target>
             </trans-unit>
+            <trans-unit id="label_assist">
+                <source>label.assist</source>
+                <target>Passe décisive</target>
+            </trans-unit>
+            <trans-unit id="label_assists">
+                <source>label.assists</source>
+                <target>Passes décisives</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

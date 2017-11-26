@@ -68,6 +68,13 @@ class MatchPlayer extends Model
      */
     protected $redCard = 0;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="assist", type="integer")
+     */
+    protected $assist = 0;
+
 
 
 
@@ -182,6 +189,22 @@ class MatchPlayer extends Model
     public function setRedCard($redCard)
     {
         $this->redCard = $redCard;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAssist()
+    {
+        return $this->assist;
+    }
+
+    /**
+     * @param int $assist
+     */
+    public function setAssist($assist)
+    {
+        $this->assist = $assist;
     }
 
     /**

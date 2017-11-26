@@ -87,6 +87,14 @@ class MatchPlayerType extends AbstractType
                             'min' => 0
                         ]
                     ])
+                    ->add('assist',IntegerType::class, [
+                        'required' => true,
+                        'label' => 'label.assist',
+                        'attr' => [
+                            'class' => 'form-control',
+                            'min' => 0
+                        ]
+                    ])
                     ->add('yellowCard',IntegerType::class, [
                         'required' => true,
                         'label' => 'result.yellow_card',
