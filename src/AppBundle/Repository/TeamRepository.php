@@ -69,13 +69,13 @@ class TeamRepository extends ModelRepository
              INNER JOIN AppBundle\Entity\Result as r9 WITH m9 = r9.match WHERE
              m9.season = :season AND m9.championship = c AND m9.visitor = t) AS away_red_card'
             )
-            ->addSelect('(SELECT COALESCE(SUM(r10.homeGoal), 0) FROM AppBundle\Entity\Match as m10
+            ->addSelect('(SELECT COALESCE(SUM(r10.visitorGoal), 0) FROM AppBundle\Entity\Match as m10
              INNER JOIN AppBundle\Entity\Result as r10 WITH m10 = r10.match WHERE
-             m10.season = :season AND m10.championship = c AND m10.visitor = t) AS home_goal_concede'
+             m10.season = :season AND m10.championship = c AND m10.home = t) AS home_goal_concede'
             )
-            ->addSelect('(SELECT COALESCE(SUM(r11.visitorGoal), 0) FROM AppBundle\Entity\Match as m11
+            ->addSelect('(SELECT COALESCE(SUM(r11.homeGoal), 0) FROM AppBundle\Entity\Match as m11
              INNER JOIN AppBundle\Entity\Result as r11 WITH m11 = r11.match WHERE
-             m11.season = :season AND m11.championship = c AND m11.home = t) AS away_goal_concede'
+             m11.season = :season AND m11.championship = c AND m11.visitor = t) AS away_goal_concede'
             )
             ->setParameter('id', $championshipId)
             ->setParameter('season', $season)

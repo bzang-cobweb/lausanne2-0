@@ -677,7 +677,7 @@
             </trans-unit>
            <trans-unit id="label_website_color">
                 <source>label.website_color</source>
-                <target>Couleur su site</target>
+                <target>Couleur du site</target>
             </trans-unit>
             <trans-unit id="label_setting">
                 <source>label.setting</source>
