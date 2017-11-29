@@ -1,15 +1,31 @@
 {% if stats is defined and stats %}
     <div class="stats">
         <div class="bg-gray float-left pl-1 width-100 mt-15">{{ 'label.general'|trans }}</div>
-        <div class="float-left mt-1 width-100">
+        <div class="float-left mt-1 width-100 border-b-gray">
+            <div class="float-left">{{ 'label.matchs_played'|trans }}</div>
+            <div class="float-right font-bold">{{ stats.play }}</div>
+        </div>
+        <div class="float-left mt-1 width-100 border-b-gray">
+            <div class="float-left">{{ 'label.matchs_win'|trans }}</div>
+            <div class="float-right font-bold">{{ stats.win }}</div>
+        </div>
+        <div class="float-left mt-1 width-100 border-b-gray">
+            <div class="float-left">{{ 'label.matchs_draw'|trans }}</div>
+            <div class="float-right font-bold">{{ stats.draw }}</div>
+        </div>
+        <div class="float-left mt-1 width-100 border-b-gray">
+            <div class="float-left">{{ 'label.matchs_lost'|trans }}</div>
+            <div class="float-right font-bold">{{ stats.lost }}</div>
+        </div>
+        <div class="float-left mt-1 width-100 border-b-gray">
             <div class="float-left">{{ 'label.goals_for'|trans }}</div>
             <div class="float-right font-bold">{{ stats.goals }}</div>
         </div>
-        <div class="float-left mt-1 width-100">
+        <div class="float-left mt-1 width-100 border-b-gray">
             <div class="float-left">{{ 'label.goals_against'|trans }}</div>
             <div class="float-right font-bold">{{ stats.c_goals }}</div>
         </div>
-        <div class="div-2 mt-1 width-100">
+        <div class="float-left mt-1 width-100 border-b-gray">
             <div class="float-left">{{ 'label.yellows_cards'|trans }}</div>
             <div class="float-right font-bold">{{ stats.yellow_card }}</div>
         </div>
@@ -20,15 +36,31 @@
 
         {% if cup is defined and not cup %}
             <div class="bg-gray float-left pl-1 mt-15 width-100">{{ 'label.domicile'|trans }}</div>
-            <div class="float-left mt-1 width-100">
+            <div class="float-left mt-1 width-100 border-b-gray">
+                <div class="float-left">{{ 'label.matchs_played'|trans }}</div>
+                <div class="float-right font-bold">{{ stats.home_play }}</div>
+            </div>
+            <div class="float-left mt-1 width-100  border-b-gray">
+                <div class="float-left">{{ 'label.matchs_win'|trans }}</div>
+                <div class="float-right font-bold">{{ stats.home_win }}</div>
+            </div>
+            <div class="float-left mt-1 width-100  border-b-gray">
+                <div class="float-left">{{ 'label.matchs_draw'|trans }}</div>
+                <div class="float-right font-bold">{{ stats.home_draw }}</div>
+            </div>
+            <div class="float-left mt-1 width-100 border-b-gray">
+                <div class="float-left">{{ 'label.matchs_lost'|trans }}</div>
+                <div class="float-right font-bold">{{ stats.home_lost }}</div>
+            </div>
+            <div class="float-left mt-1 width-100 border-b-gray">
                 <div class="float-left">{{ 'label.goals_for'|trans }}</div>
                 <div class="float-right font-bold">{{ stats.home_goal }}</div>
             </div>
-            <div class="float-left mt-1 width-100">
+            <div class="float-left mt-1 width-100 border-b-gray">
                 <div class="float-left">{{ 'label.goals_against'|trans }}</div>
                 <div class="float-right font-bold">{{ stats.home_goal_concede }}</div>
             </div>
-            <div class="float-left mt-1 width-100">
+            <div class="float-left mt-1 width-100 border-b-gray">
                 <div class="float-left">{{ 'label.yellows_cards'|trans }}</div>
                 <div class="float-right font-bold">{{ stats.home_yellow_card }}</div>
             </div>
@@ -38,15 +70,31 @@
             </div>
 
             <div class="bg-gray float-left pl-1 mt-15 width-100">{{ 'label.exterior'|trans }}</div>
-            <div class="float-left mt-1 width-100">
+            <div class="float-left mt-1 width-100 border-b-gray">
+                <div class="float-left">{{ 'label.matchs_played'|trans }}</div>
+                <div class="float-right font-bold">{{ stats.away_play }}</div>
+            </div>
+            <div class="float-left mt-1 width-100 border-b-gray">
+                <div class="float-left">{{ 'label.matchs_win'|trans }}</div>
+                <div class="float-right font-bold">{{ stats.away_win }}</div>
+            </div>
+            <div class="float-left mt-1 width-100 border-b-gray">
+                <div class="float-left">{{ 'label.matchs_draw'|trans }}</div>
+                <div class="float-right font-bold">{{ stats.away_draw }}</div>
+            </div>
+            <div class="float-left mt-1 width-100 border-b-gray">
+                <div class="float-left">{{ 'label.matchs_lost'|trans }}</div>
+                <div class="float-right font-bold">{{ stats.away_lost }}</div>
+            </div>
+            <div class="float-left mt-1 width-100 border-b-gray">
                 <div class="float-left">{{ 'label.goals_for'|trans }}</div>
                 <div class="float-right font-bold">{{ stats.away_goal }}</div>
             </div>
-            <div class="float-left mt-1 width-100">
+            <div class="float-left mt-1 width-100 border-b-gray">
                 <div class="float-left">{{ 'label.goals_against'|trans }}</div>
                 <div class="float-right font-bold">{{ stats.away_goal_concede }}</div>
             </div>
-            <div class="float-left mt-1 width-100">
+            <div class="float-left mt-1 width-100 border-b-gray">
                 <div class="float-left">{{ 'label.yellows_cards'|trans }}</div>
                 <div class="float-right font-bold">{{ stats.away_yellow_card }}</div>
             </div>

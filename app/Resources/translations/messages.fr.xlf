@@ -695,6 +695,22 @@
                 <source>label.green</source>
                 <target>Vert</target>
             </trans-unit>
+             <trans-unit id="label_matchs_played">
+                 <source>label.matchs_played</source>
+                 <target>Joués</target>
+             </trans-unit>
+             <trans-unit id="label_matchs_win">
+                 <source>label.matchs_win</source>
+                 <target>Victoires</target>
+             </trans-unit>
+             <trans-unit id="label_matchs_draw">
+                 <source>label.matchs_draw</source>
+                 <target>Nuls</target>
+             </trans-unit>
+             <trans-unit id="label_matchs_lost">
+                 <source>label.matchs_lost</source>
+                 <target>Défaites</target>
+             </trans-unit>
         </body>
     </file>
 </xliff>

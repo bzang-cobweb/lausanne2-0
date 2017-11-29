@@ -77,6 +77,44 @@ class TeamRepository extends ModelRepository
              INNER JOIN AppBundle\Entity\Result as r11 WITH m11 = r11.match WHERE
              m11.season = :season AND m11.championship = c AND m11.visitor = t) AS away_goal_concede'
             )
+            ->addSelect('(SELECT CASE WHEN (COUNT(m12) > 0) THEN COUNT(m12) ELSE 0 END FROM AppBundle\Entity\Match as m12
+             INNER JOIN AppBundle\Entity\Result as r12 WITH m12 = r12.match WHERE m12.home = t 
+             AND m12.season = :season AND m12.championship = c) AS home_play'
+            )
+            ->addSelect('(SELECT CASE WHEN (COUNT(m13) > 0) THEN COUNT(m13) ELSE 0 END FROM AppBundle\Entity\Match as m13
+             INNER JOIN AppBundle\Entity\Result as r13 WITH m13 = r13.match WHERE 
+             m13.home = t AND r13.homeGoal > r13.visitorGoal
+             AND m13.season = :season AND m13.championship = c) AS home_win'
+            )
+            ->addSelect('(SELECT CASE WHEN (COUNT(m14) > 0) THEN COUNT(m14) ELSE 0 END FROM AppBundle\Entity\Match as m14
+             INNER JOIN AppBundle\Entity\Result as r14 WITH m14 = r14.match WHERE 
+             m14.home = t AND r14.homeGoal < r14.visitorGoal  
+             AND m14.season = :season AND m14.championship = c) AS home_lost'
+            )
+            ->addSelect('(SELECT CASE WHEN (COUNT(m15) > 0) THEN COUNT(m15) ELSE 0 END FROM AppBundle\Entity\Match as m15
+             INNER JOIN AppBundle\Entity\Result as r15 WITH m15 = r15.match WHERE 
+             m15.home = t AND r15.homeGoal = r15.visitorGoal
+             AND m15.season = :season AND m15.championship = c) AS home_draw'
+            )
+            ->addSelect('(SELECT CASE WHEN (COUNT(m16) > 0) THEN COUNT(m16) ELSE 0 END FROM AppBundle\Entity\Match as m16
+             INNER JOIN AppBundle\Entity\Result as r16 WITH m16 = r16.match WHERE m16.visitor = t 
+             AND m16.season = :season AND m16.championship = c) AS away_play'
+            )
+            ->addSelect('(SELECT CASE WHEN (COUNT(m17) > 0) THEN COUNT(m17) ELSE 0 END FROM AppBundle\Entity\Match as m17
+             INNER JOIN AppBundle\Entity\Result as r17 WITH m17 = r17.match WHERE 
+             m17.visitor = t AND r17.visitorGoal > r17.homeGoal
+             AND m17.season = :season AND m17.championship = c) AS away_win'
+            )
+            ->addSelect('(SELECT CASE WHEN (COUNT(m18) > 0) THEN COUNT(m18) ELSE 0 END FROM AppBundle\Entity\Match as m18
+             INNER JOIN AppBundle\Entity\Result as r18 WITH m18 = r18.match WHERE 
+             m18.visitor = t AND r18.visitorGoal < r18.homeGoal  
+             AND m18.season = :season AND m18.championship = c) AS away_lost'
+            )
+            ->addSelect('(SELECT CASE WHEN (COUNT(m19) > 0) THEN COUNT(m19) ELSE 0 END FROM AppBundle\Entity\Match as m19
+             INNER JOIN AppBundle\Entity\Result as r19 WITH m19 = r19.match WHERE 
+             m19.visitor = t AND r19.visitorGoal = r19.homeGoal
+             AND m19.season = :season AND m19.championship = c) AS away_draw'
+            )
             ->setParameter('id', $championshipId)
             ->setParameter('season', $season)
             ->setParameter('createdAt', $period['createdAt'])
