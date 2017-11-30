@@ -116,7 +116,7 @@ class AdminNewsController extends AdminController
 
     /**
      *
-     * @Route("/cwadmin/news/{id}/detail/", name="admin_detail_news_route", requirements={"id": "\d+"})
+     * @Route("/admin/news/{id}/detail/", name="admin_detail_news_route", requirements={"id": "\d+"})
      * @Method({"GET"})
      * @Security("has_role('ROLE_ADMIN')")
      */
