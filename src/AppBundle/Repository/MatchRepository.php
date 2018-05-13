@@ -91,11 +91,15 @@ class MatchRepository extends ModelRepository
      * @return mixed
      */
     public function delete($id){
-        return $this->createQueryBuilder('m')
+        try{
+	$r = $this->createQueryBuilder('m')
             ->delete()
             ->where('m.id IN (' . implode(',', (is_array($id) ? $id : [$id])) . ')')
             ->getQuery()
             ->getSingleScalarResult();
+} catch(\Exception $e){
+	die($e->getMessage() . 'delete');
+}
     }
 
 }
