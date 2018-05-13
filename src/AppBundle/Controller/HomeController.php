@@ -59,7 +59,7 @@ class HomeController extends FrontController
                     ->findByLike(
                         [
                             'championship' => $championship->getId(),
-                            'scheduledAt' => date('Y-m-d', strtotime('+1 week'))
+                            'scheduledAt' => date('Y-m-d', strtotime('+8 days'))
                         ],
                         ['scheduledAt' => 'DESC'],
                         20
